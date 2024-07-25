@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -31,7 +32,7 @@ public class LeftBar extends JPanel{
         color_box.setLocation(10,15);
         color_box.setBackground(Color.RED);
 
-        //text.setFont(new Font("Tahoma", Font.BOLD, 10));
+        text.setFont(new Font("Tahoma", Font.BOLD, 10));
         text.setSize(90,60);
         text.setLocation(70,15);
 
