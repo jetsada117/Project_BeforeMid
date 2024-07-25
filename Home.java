@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 public class Home {
     public static void main(String[] args) {
         MyFrame frame = new MyFrame();
@@ -14,6 +15,7 @@ class MyFrame extends JFrame{
     JPanel pan2 = new JPanel();
     JPanel pan3 = new JPanel();
     JPanel pink = new JPanel();
+
     public MyFrame() {
         setSize(900,600);
         setLocation(400,200);
@@ -35,12 +37,10 @@ class MyFrame extends JFrame{
 
         pan3.setSize(getWidth(),getHeight()*25/100);
         pan3.setLocation(0,pan1.getHeight()+5);
+        pan3.setLayout(null);
         pan3.setBackground(Color.blue);
 
-        add(pan1);
-        add(pan2);
-        add(pan3);
-        add(pink);
+        ButtonPeple btnPP = new ButtonPeple();
 
         ButtonPM buttonPM = new ButtonPM(10, 20);
 
@@ -49,5 +49,11 @@ class MyFrame extends JFrame{
                 pan1.add(buttonPM.getButton(i, j));
             }
         }
+
+        pan3.add(btnPP);
+        add(pan1);
+        add(pan2);
+        add(pan3);
+        add(pink);
     }
 }
