@@ -16,14 +16,14 @@ public class ButtonFile extends JPanel{
 
         text.setSize(120,20);
         text.setLocation(10,5);
-        text.setFont(new Font("Arial", Font.BOLD, 12));
+        text.setFont(new Font("Arial", Font.BOLD, 10));
         
         text_box.setSize(160,20);
         text_box.setLocation(10,25);
 
         confirm.setSize(160,40);
         confirm.setLocation(10,55);
-        confirm.setFont(new Font("Arial", Font.BOLD, 10));
+        confirm.setFont(new Font("Arial", Font.BOLD, 15));
 
         add(text);
         add(text_box);

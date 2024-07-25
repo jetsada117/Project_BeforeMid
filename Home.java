@@ -24,7 +24,7 @@ class MyFrame extends JFrame{
         
         pink.setSize(getWidth(),getHeight());
         pink.setLocation(0,0); 
-        pink.setBackground(Color.GREEN);         
+        pink.setBackground(Color.BLUE);         
 
         panside2.setSize(180,420);
         panside2.setLocation(718,0);
@@ -33,7 +33,7 @@ class MyFrame extends JFrame{
         pan1.setSize(530,420);
         pan1.setLocation(184,0);        
         pan1.setLayout(new GridLayout(10,20));
-        pan1.setBackground(Color.GREEN);
+        pan1.setBackground(Color.BLUE);
 
         pan3.setSize(getWidth(),150);
         pan3.setLocation(0,423);

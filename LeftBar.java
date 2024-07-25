@@ -23,18 +23,20 @@ public class LeftBar extends JPanel{
     void setPanred() {
         panred.setSize(160,90);
         panred.setLocation(10,10);
+        panred.setBackground(Color.GRAY);
         panred.setLayout(null);
 
         JPanel color_box = new JPanel();
-        JLabel text = new JLabel("มีคนป่วยเกิน 30% ของประชากรในพื้นที่");
+        JLabel text = new JLabel("<html>มีคนป่วยเกิน 30% ของประชากรในพื้นที่</html>");
 
-        color_box.setSize(60,60);
-        color_box.setLocation(10,15);
+        color_box.setSize(50,50);
+        color_box.setLocation(0,15);
         color_box.setBackground(Color.RED);
 
         text.setFont(new Font("Tahoma", Font.BOLD, 10));
-        text.setSize(90,60);
-        text.setLocation(70,15);
+        text.setSize(105,60);
+        text.setLocation(55,10);
+        text.setForeground(Color.WHITE);
 
         panred.add(color_box);
         panred.add(text);
@@ -43,39 +45,66 @@ public class LeftBar extends JPanel{
     void setPanorang() {
         panorang.setSize(160,90);
         panorang.setLocation(10,110);
+        panorang.setBackground(Color.GRAY);
         panorang.setLayout(null);
 
         JPanel color_box = new JPanel();
+        JLabel text = new JLabel("<html>มีคนป่วย 20-29% ของประชากรในพื้นที่</html>");
 
-        color_box.setSize(60,60);
-        color_box.setLocation(10,15);
+        color_box.setSize(50,50);
+        color_box.setLocation(0,15);
         color_box.setBackground(Color.ORANGE);
+
+        text.setFont(new Font("Tahoma", Font.BOLD, 10));
+        text.setSize(105,60);
+        text.setLocation(55,10);
+        text.setForeground(Color.WHITE);
+
         panorang.add(color_box);
+        panorang.add(text);
     }
 
     void setPanyellow() {
         panyellow.setSize(160,90);
         panyellow.setLocation(10,210);
+        panyellow.setBackground(Color.GRAY);
         panyellow.setLayout(null);
 
         JPanel color_box = new JPanel();
+        JLabel text = new JLabel("<html>มีคนป่วย 10-19% ของประชากรในพื้นที่</html>");
 
-        color_box.setSize(60,60);
-        color_box.setLocation(10,15);
+        color_box.setSize(50,50);
+        color_box.setLocation(0,15);
         color_box.setBackground(Color.YELLOW);
+
+        text.setFont(new Font("Tahoma", Font.BOLD, 10));
+        text.setSize(105,60);
+        text.setLocation(55,10);
+        text.setForeground(Color.WHITE);
+
         panyellow.add(color_box);
+        panyellow.add(text);
     }
 
     void setPangreen() {
         pangreen.setSize(160,90);
         pangreen.setLocation(10,310);
+        pangreen.setBackground(Color.GRAY);
         pangreen.setLayout(null);
 
         JPanel color_box = new JPanel();
+        JLabel text = new JLabel("<html>มีคนป่วย 0-9% ของประชากรในพื้นที่</html>");
 
-        color_box.setSize(60,60);
-        color_box.setLocation(10,15);
+        color_box.setSize(50,50);
+        color_box.setLocation(0,15);
         color_box.setBackground(Color.GREEN);
+
+        text.setFont(new Font("Tahoma", Font.BOLD, 10));
+        text.setSize(105,60);
+        text.setLocation(55,10);
+        text.setForeground(Color.WHITE);
+
         pangreen.add(color_box);
+        pangreen.add(text);
     }
 }
