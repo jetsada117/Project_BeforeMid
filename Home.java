@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 public class Home {
     public static void main(String[] args) {
         MyFrame frame = new MyFrame();
-        frame.pack();
         frame.setVisible(true);
     }
 }    
