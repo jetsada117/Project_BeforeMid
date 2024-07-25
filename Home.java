@@ -1,4 +1,3 @@
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
@@ -43,12 +42,11 @@ class MyFrame extends JFrame{
         add(pan3);
         add(pink);
 
-        String [][] bt = new String[10][20];
+        ButtonPM buttonPM = new ButtonPM(10, 20);
 
-        for (int i = 0; i < bt.length; i++) {
-            for (int j = 0; j < bt[i].length; j++) {    
-                Button btnf = new Button();
-                pan1.add(btnf);
+        for (int i = 0; i < buttonPM.getRow(); i++) {
+            for (int j = 0; j < buttonPM.getCol(); j++) {
+                pan1.add(buttonPM.getButton(i, j));
             }
         }
     }
