@@ -12,7 +12,7 @@ public class ButtonPeple extends JPanel{
 
     ButtonPeple() {
 
-        setFont(new Font("Arial", Font.PLAIN, 5));
+        // setFont(new Font("Arial", Font.PLAIN, 5));
         setSize(130,100);
         setLocation(300,20);
         setBackground(Color.GREEN);
