@@ -1,18 +1,18 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Label;
+import java.awt.TextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class ButtonPeple extends JPanel{
     JButton confirm = new JButton("CONFIRM");
     Label text = new Label("INPUT POPULATION");
-    JTextField text_box = new JTextField();
+    TextField text_box = new TextField();
 
     ButtonPeple() {
 
-        // setFont(new Font("Arial", Font.PLAIN, 5));
+        setFont(new Font("Arial", Font.PLAIN, 5));
         setSize(130,100);
         setLocation(200,20);
         setBackground(Color.GREEN);
@@ -29,7 +29,6 @@ public class ButtonPeple extends JPanel{
         text_box.setSize(110,20);
         text_box.setLocation(10,25);
         text_box.setFont(new Font("Arial", Font.PLAIN, 10));
-
 
         add(confirm);
         add(text);
