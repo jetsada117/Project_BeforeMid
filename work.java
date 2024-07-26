@@ -52,9 +52,6 @@ class MyFramework extends JFrame{
         add(buttonoborganizer);
         add(ButtonStart);
         add(jPanel1);
-
-        // ้ำำสสน ไนพสกujdsfh89u idsfrgt iuy
-        
     }
 }
 
