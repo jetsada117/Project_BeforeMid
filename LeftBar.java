@@ -44,7 +44,7 @@ public class LeftBar extends JPanel{
 
     void setPanorang() {
         panorang.setSize(160,90);
-        panorang.setLocation(10,110);
+        panorang.setLocation(10,100);
         panorang.setBackground(Color.GRAY);
         panorang.setLayout(null);
 
@@ -66,7 +66,7 @@ public class LeftBar extends JPanel{
 
     void setPanyellow() {
         panyellow.setSize(160,90);
-        panyellow.setLocation(10,210);
+        panyellow.setLocation(10,190);
         panyellow.setBackground(Color.GRAY);
         panyellow.setLayout(null);
 
@@ -88,7 +88,7 @@ public class LeftBar extends JPanel{
 
     void setPangreen() {
         pangreen.setSize(160,90);
-        pangreen.setLocation(10,310);
+        pangreen.setLocation(10,280);
         pangreen.setBackground(Color.GRAY);
         pangreen.setLayout(null);
 

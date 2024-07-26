@@ -18,7 +18,7 @@ class MyFrame extends JFrame{
 
     public MyFrame() {
         setSize(900,600);
-        setLocation(400,200);
+        setLocation(400,100);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
         
@@ -35,7 +35,7 @@ class MyFrame extends JFrame{
         pan1.setLayout(new GridLayout(10,20));
         pan1.setBackground(Color.BLUE);
 
-        pan3.setSize(getWidth(),150);
+        pan3.setSize(getWidth(),177);
         pan3.setLocation(0,423);
         pan3.setLayout(null);
         pan3.setBackground(Color.GRAY);
@@ -66,6 +66,4 @@ class MyFrame extends JFrame{
         add(pan3);
         add(pink);
     }
-
-
 }
