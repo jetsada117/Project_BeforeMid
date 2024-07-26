@@ -4,19 +4,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ButtonFile extends JPanel{
-    JLabel text = new JLabel("INPUT FILE");
+public class ButtonRandom extends JPanel{
+    JLabel text = new JLabel("INPUT RAGE OF RANDOM VALUES");
     JTextField text_box = new JTextField();
-    JButton confirm = new JButton("SELECT");
+    JButton confirm = new JButton("RANDOM");
 
-    public ButtonFile() {
+    public ButtonRandom() {
         setSize(180,100);
-        setLocation(10,20);
+        setLocation(340,20);
         setLayout(null);
-
-        text.setSize(120,20);
+        
+        text.setSize(160,20);
         text.setLocation(10,5);
-        text.setFont(new Font("Arial", Font.BOLD, 10));
+        text.setFont(new Font("Arial", Font.BOLD, 9));
         
         text_box.setSize(160,20);
         text_box.setLocation(10,25);

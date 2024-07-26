@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Label;
 import java.awt.TextField;
@@ -15,7 +14,7 @@ public class ButtonPeple extends JPanel{
         setFont(new Font("Arial", Font.PLAIN, 5));
         setSize(130,100);
         setLocation(200,20);
-        setBackground(Color.GREEN);
+        //setBackground(Color.GREEN);
         setLayout(null);        
         
         confirm.setSize(120,40);

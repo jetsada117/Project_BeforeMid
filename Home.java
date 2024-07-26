@@ -18,7 +18,7 @@ class MyFrame extends JFrame{
 
     public MyFrame() {
         setSize(900,600);
-        setLocation(400,100);
+        setLocation(400,200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
         
@@ -40,11 +40,12 @@ class MyFrame extends JFrame{
         pan3.setLayout(null);
         pan3.setBackground(Color.GRAY);
 
+        ButtonFile btnFile = new ButtonFile();
         ButtonPeple btnPP = new ButtonPeple();
-
         ButtonPM buttonPM = new ButtonPM(10, 20);
-
-        ButtonFile btnF = new ButtonFile();
+        ButtonRandom btnRan = new ButtonRandom();
+        ButtonRain btnRain = new ButtonRain();
+        ButtonPlane btnPlane = new ButtonPlane();
 
         LeftBar sidLeftBar = new LeftBar();
         sidLeftBar.setPanred();
@@ -59,11 +60,15 @@ class MyFrame extends JFrame{
         }
 
         pan3.add(btnPP);
-        pan3.add(btnF);
+        pan3.add(btnFile);
+        pan3.add(btnRan);
+        pan3.add(btnRain);
+        pan3.add(btnPlane);
         add(pan1);
         add(sidLeftBar);
         add(panside2);
         add(pan3);
+
         add(pink);
     }
 }
