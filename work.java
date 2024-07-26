@@ -54,7 +54,7 @@ class MyFramework extends JFrame{
         add(ButtonStart);
         add(jPanel1);
 
-        // ้ำำสสน ไนพสก
+        // ้ำำสสน ไนพสกujdsfh89u idsfrgt iuy
         
     }
 }
