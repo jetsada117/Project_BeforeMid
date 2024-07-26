@@ -31,11 +31,11 @@ class MyFrame extends JFrame{
         
         background.setSize(getWidth(),getHeight());
         background.setLocation(0,0); 
-        background.setBackground(Color.BLUE);         
+        background.setBackground(new Color(211,211,211));         
 
         panside2.setSize(180,420);
         panside2.setLocation(718,0);
-        panside2.setBackground(Color.GRAY);
+        panside2.setBackground(new Color(159,160,159));
         panside2.setLayout(null);
         
         dust.setSize(160,50);
@@ -72,7 +72,7 @@ class MyFrame extends JFrame{
         pan1.setSize(530,420);
         pan1.setLocation(184,0);        
         pan1.setLayout(new GridLayout(10,20));
-        pan1.setBackground(Color.BLUE);
+        pan1.setBackground(new Color(211,211,211));
 
         ButtonPM buttonPM = new ButtonPM(10, 20);
 

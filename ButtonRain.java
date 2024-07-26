@@ -10,7 +10,7 @@ public class ButtonRain  extends JPanel{
         setSize(150,130);
         setLocation(530,10);
         setLayout(null);
-        setBackground(Color.GRAY);
+        setBackground(new Color(159,160,159));
 
         ImageIcon imageIcon = new ImageIcon("Rain.png");
         Image image = imageIcon.getImage();
@@ -18,7 +18,7 @@ public class ButtonRain  extends JPanel{
         imageIcon = new ImageIcon(scaledImage);
 
         JButton button = new JButton(imageIcon);      
-        button.setBackground(Color.GRAY);
+        button.setBackground(new Color(159,160,159));
         button.setBounds(0, 0, getWidth(), 120);
         add(button);
     }

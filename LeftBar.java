@@ -8,11 +8,11 @@ public class LeftBar extends JPanel{
     JPanel panorang = new JPanel();
     JPanel panyellow = new JPanel();
     JPanel pangreen = new JPanel();
-    
+
     LeftBar() {
         setSize(180,420);
         setLocation(0,0);
-        setBackground(Color.GRAY);
+        setBackground(new Color(159,160,159));
         setLayout(null);
 
         add(panred);        
@@ -24,7 +24,7 @@ public class LeftBar extends JPanel{
     void setPanred() {
         panred.setSize(160,90);
         panred.setLocation(10,10);
-        panred.setBackground(Color.GRAY);
+        panred.setBackground(new Color(159,160,159));
         panred.setLayout(null);
 
         JPanel color_box = new JPanel();
@@ -46,7 +46,7 @@ public class LeftBar extends JPanel{
     void setPanorang() {
         panorang.setSize(160,90);
         panorang.setLocation(10,100);
-        panorang.setBackground(Color.GRAY);
+        panorang.setBackground(new Color(159,160,159));
         panorang.setLayout(null);
 
         JPanel color_box = new JPanel();
@@ -68,7 +68,7 @@ public class LeftBar extends JPanel{
     void setPanyellow() {
         panyellow.setSize(160,90);
         panyellow.setLocation(10,190);
-        panyellow.setBackground(Color.GRAY);
+        panyellow.setBackground(new Color(159,160,159));
         panyellow.setLayout(null);
 
         JPanel color_box = new JPanel();
@@ -90,7 +90,7 @@ public class LeftBar extends JPanel{
     void setPangreen() {
         pangreen.setSize(160,90);
         pangreen.setLocation(10,280);
-        pangreen.setBackground(Color.GRAY);
+        pangreen.setBackground(new Color(159,160,159));
         pangreen.setLayout(null);
 
         JPanel color_box = new JPanel();

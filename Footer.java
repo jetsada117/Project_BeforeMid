@@ -6,7 +6,7 @@ public class Footer extends JPanel {
         setSize(900,177);
         setLocation(0,423);
         setLayout(null);
-        setBackground(Color.GRAY);
+        setBackground(new Color(159,160,159));
 
         ButtonFile btnFile = new ButtonFile();
         ButtonPeple btnPP = new ButtonPeple();
