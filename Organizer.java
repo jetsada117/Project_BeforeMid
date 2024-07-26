@@ -17,15 +17,9 @@ class MyFrameOR extends JFrame{
     JPanel background = new JPanel();
     // JPanel textbox = new JPanel();
     JLabel text = new JLabel("<html>นาย เจษฎา พรหมบุตร 66011212160<br><br>นาย นฤพล ท่าสะอาด 66011212182<br><br>นาย ณัฐพงษ์ จันทร์คำพา 66011212087</html>"); 
-    JPanel box_1 = new JPanel();
-    JPanel box_2 = new JPanel();
-    JPanel box_3 = new JPanel();
-
-    ImageIcon img = new ImageIcon("Background_page3.jpg");
-    Image image1 = img.getImage();
-    Image image2 = image1.getScaledInstance(900,600,Image.SCALE_SMOOTH);
-    ImageIcon imageIcon1 = new ImageIcon(image2);
-    JLabel imgback = new JLabel(imageIcon1);
+    JLabel box_1 = new JLabel(getImage("No1.png",200,250));
+    JLabel box_2 = new JLabel(getImage("No2.png",200,250));
+    JLabel box_3 = new JLabel(getImage("No3.png",200,250));
 
     public MyFrameOR(){
         setSize(900,600);
@@ -34,24 +28,22 @@ class MyFrameOR extends JFrame{
         setLayout(null);        
         
         background.setSize(900,600);
-        // background.setBackground(Color.blue);
         background.setLocation(0,0);
 
-        box_1.setSize(150,250);
-        box_1.setLocation(150,20);
-        box_1.setBackground(Color.BLACK);
+        box_1.setSize(180,250);
+        box_1.setLocation(100,20);
 
-        box_2.setSize(150,250);
-        box_2.setLocation(375,20);
-        box_2.setBackground(Color.BLACK);
+        box_2.setSize(180,250);
+        box_2.setLocation(360,20);
 
-        box_3.setSize(150,250);
+        box_3.setSize(180,250);
         box_3.setLocation(600,20);
-        box_3.setBackground(Color.BLACK);
 
         text.setSize(600,300);
         text.setLocation(150,250);
         text.setFont(new Font("Tahoma", Font.BOLD, 30));
+
+        JLabel imgback = new JLabel(getImage("Background_page3.jpg",900,600));
 
         background.add(imgback);  
         add(box_1);
@@ -59,6 +51,14 @@ class MyFrameOR extends JFrame{
         add(box_3);
         add(text);   
         add(background);  
+    }
+    
+    ImageIcon getImage(String filename,int width,int height) {
+        ImageIcon img = new ImageIcon(filename);
+        Image image1 = img.getImage();
+        Image image2 = image1.getScaledInstance(width,height,Image.SCALE_SMOOTH);
+        ImageIcon imageIcon1 = new ImageIcon(image2);
 
-    } 
+        return imageIcon1;
+    }
 }
