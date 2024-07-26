@@ -1,7 +1,5 @@
 import java.awt.Font;
-
 import javax.swing.JButton;
-import javax.swing.JPanel;
 
 public class set_Logout extends JButton {
    
