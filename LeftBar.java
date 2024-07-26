@@ -8,6 +8,7 @@ public class LeftBar extends JPanel{
     JPanel panorang = new JPanel();
     JPanel panyellow = new JPanel();
     JPanel pangreen = new JPanel();
+    
     LeftBar() {
         setSize(180,420);
         setLocation(0,0);

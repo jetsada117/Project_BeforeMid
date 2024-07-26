@@ -6,22 +6,20 @@ import javax.swing.JPanel;
 import java.awt.Font;
 import java.awt.Image;
 
-public class work {
+public class Menu {
     public static void main(String[] in){
         MyFramework frame = new MyFramework();
         frame.setVisible(true);  
-
     }
 }
 class MyFramework extends JFrame{
     JLabel jLabel = new JLabel("PM 2.5");
-
-    ImageIcon img = new ImageIcon("Background_Menu.jpg");
+    JPanel jPanel1 = new JPanel();
+    ImageIcon img = new ImageIcon("Img_menu.jpg");
     Image image1 = img.getImage();
     Image image2 = image1.getScaledInstance(900,600,Image.SCALE_SMOOTH);
     ImageIcon imageIcon1 = new ImageIcon(image2);
-    JLabel jLabelImg = new JLabel(imageIcon1);
-    JPanel jPanel1 = new JPanel();
+    JLabel imgback = new JLabel(imageIcon1);
 
     public MyFramework(){
         setSize(900,600);
@@ -39,14 +37,11 @@ class MyFramework extends JFrame{
         set_Logout buttonend = new set_Logout();
         
         
-        jLabel.setSize(200, 120);
+        jLabel.setSize(300, 120);
         jLabel.setLocation(350, 20);
-        jLabel.setFont(new Font("Arial", Font.BOLD, 60));
-
-
-
-        jPanel1.add(jLabelImg);
+        jLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 60));
         
+        jPanel1.add(imgback);
         add(jLabel);
         add(buttonend);
         add(buttonoborganizer);
