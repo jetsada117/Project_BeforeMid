@@ -13,7 +13,7 @@ public class Home {
 }    
 
 class MyFrame extends JFrame{
-    JPanel pan1 = new JPanel();
+    JPanel pan1 = new JPanel();//pull
     JPanel panside2 = new JPanel();
     JPanel background = new JPanel();
     JLabel dust = new JLabel("<html>Dust = 100</html>");
@@ -77,6 +77,10 @@ class MyFrame extends JFrame{
         ButtonPM buttonPM = new ButtonPM(10, 20);
 
         LeftBar sidLeftBar = new LeftBar();
+        sidLeftBar.setPanred();
+        sidLeftBar.setPanorang();
+        sidLeftBar.setPanyellow();
+        sidLeftBar.setPangreen();
 
         Footer footer = new Footer();
 
