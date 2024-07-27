@@ -14,7 +14,7 @@ public class Organizer {
 
 class MyFrameOR extends JFrame{
     JPanel background = new JPanel();
-    JLabel text = new JLabel("<html>นาย เจษฎา พรหมบุตร 66011212160<br><br>นาย นฤพล ท่าสะอาด 66011212182<br><br>นาย ณัฐพงษ์ จันทร์คำพา 66011212087</html>"); 
+    JLabel text = new JLabel("<html><div style='width:600px'>นายเจษฎา พรหมบุตร 66011212160<br><br>นายนฤพล ท่าสะอาด 66011212182<br><br>นายณัฐพงษ์ จันทร์คำพา 66011212087</div></html>"); 
     JLabel box_1 = new JLabel(getImage("Image\\No1.png",180,250));
     JLabel box_2 = new JLabel(getImage("Image\\No2.png",180,250));
     JLabel box_3 = new JLabel(getImage("Image\\No3.png",180,250));
