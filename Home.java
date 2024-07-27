@@ -77,10 +77,6 @@ class MyFrame extends JFrame{
         ButtonPM buttonPM = new ButtonPM(10, 20);
 
         LeftBar sidLeftBar = new LeftBar();
-        sidLeftBar.setPanred();
-        sidLeftBar.setPanorang();
-        sidLeftBar.setPanyellow();
-        sidLeftBar.setPangreen();
 
         Footer footer = new Footer();
 

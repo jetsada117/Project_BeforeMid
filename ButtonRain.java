@@ -12,7 +12,7 @@ public class ButtonRain  extends JPanel{
         setLayout(null);
         setBackground(new Color(159,160,159));
 
-        ImageIcon imageIcon = new ImageIcon("Rain.png");
+        ImageIcon imageIcon = new ImageIcon("Image\\\\Rain.png");
         Image image = imageIcon.getImage();
         Image scaledImage = image.getScaledInstance(getWidth(), 120, Image.SCALE_SMOOTH); // Scale image to fit button
         imageIcon = new ImageIcon(scaledImage);

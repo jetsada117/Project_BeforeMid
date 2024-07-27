@@ -12,7 +12,7 @@ public class ButtonPlane extends JPanel {
         setLayout(null);
         setBackground(new Color(159,160,159));
 
-        ImageIcon imageIcon = new ImageIcon("Plane.png");
+        ImageIcon imageIcon = new ImageIcon("Image\\\\Plane.png");
         Image image = imageIcon.getImage();
         Image scaledImage = image.getScaledInstance(getWidth(), 120, Image.SCALE_SMOOTH); // Scale image to fit button
         imageIcon = new ImageIcon(scaledImage);

@@ -16,9 +16,9 @@ public class Organizer {
 class MyFrameOR extends JFrame{
     JPanel background = new JPanel();
     JLabel text = new JLabel("<html>นาย เจษฎา พรหมบุตร 66011212160<br><br>นาย นฤพล ท่าสะอาด 66011212182<br><br>นาย ณัฐพงษ์ จันทร์คำพา 66011212087</html>"); 
-    JLabel box_1 = new JLabel(getImage("No1.png",200,250));
-    JLabel box_2 = new JLabel(getImage("No2.png",200,250));
-    JLabel box_3 = new JLabel(getImage("No3.png",200,250));
+    JLabel box_1 = new JLabel(getImage("Image\\No1.png",180,250));
+    JLabel box_2 = new JLabel(getImage("Image\\No2.png",180,250));
+    JLabel box_3 = new JLabel(getImage("Image\\No3.png",180,250));
 
     public MyFrameOR(){
         setSize(900,600);
@@ -42,7 +42,7 @@ class MyFrameOR extends JFrame{
         text.setLocation(150,250);
         text.setFont(new Font("Tahoma", Font.BOLD, 30));
 
-        JLabel imgback = new JLabel(getImage("Background_page3.jpg",900,600));
+        JLabel imgback = new JLabel(getImage("Image\\\\Background_page3.jpg",900,600));
 
         background.add(imgback);  
         add(box_1);

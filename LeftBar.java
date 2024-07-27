@@ -4,108 +4,42 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class LeftBar extends JPanel{
-    JPanel panred = new JPanel();
-    JPanel panorang = new JPanel();
-    JPanel panyellow = new JPanel();
-    JPanel pangreen = new JPanel();
+    Color color = new Color(159,160,159);
 
     LeftBar() {
         setSize(180,420);
         setLocation(0,0);
-        setBackground(new Color(159,160,159));
+        setBackground(color);
         setLayout(null);
 
-        add(panred);        
-        add(panorang);
-        add(panyellow);
-        add(pangreen);        
+        add(getPanel(color, Color.RED,"<html>มีคนป่วยเกิน 30% ของประชากรในพื้นที่</html>", Color.WHITE,10,10));        
+        add(getPanel(color, Color.ORANGE,"<html>มีคนป่วย 20-29% ของประชากรในพื้นที่</html>", Color.WHITE,10,100));
+        add(getPanel(color, Color.YELLOW,"<html>มีคนป่วย 10-19% ของประชากรในพื้นที่</html>", Color.WHITE,10,190));
+        add(getPanel(color, Color.GREEN,"<html>มีคนป่วย 0-9% ของประชากรในพื้นที่</html>", Color.WHITE,10,280));        
     }
 
-    void setPanred() {
-        panred.setSize(160,90);
-        panred.setLocation(10,10);
-        panred.setBackground(new Color(159,160,159));
-        panred.setLayout(null);
+    JPanel getPanel(Color background,Color box,String text,Color ctext, int x, int y) {    
+        JPanel panel = new JPanel();
+        panel.setSize(160,90);
+        panel.setLocation(x,y);
+        panel.setBackground(background);
+        panel.setLayout(null);
 
         JPanel color_box = new JPanel();
-        JLabel text = new JLabel("<html>มีคนป่วยเกิน 30% ของประชากรในพื้นที่</html>");
+        JLabel text_label = new JLabel(text);
 
         color_box.setSize(50,50);
         color_box.setLocation(0,15);
-        color_box.setBackground(Color.RED);
+        color_box.setBackground(box);
 
-        text.setFont(new Font("Tahoma", Font.BOLD, 10));
-        text.setSize(105,60);
-        text.setLocation(55,10);
-        text.setForeground(Color.WHITE);
+        text_label.setFont(new Font("Tahoma", Font.BOLD, 10));
+        text_label.setSize(105,60);
+        text_label.setLocation(55,10);
+        text_label.setForeground(ctext);
 
-        panred.add(color_box);
-        panred.add(text);
-    }
+        panel.add(color_box);
+        panel.add(text_label);
 
-    void setPanorang() {
-        panorang.setSize(160,90);
-        panorang.setLocation(10,100);
-        panorang.setBackground(new Color(159,160,159));
-        panorang.setLayout(null);
-
-        JPanel color_box = new JPanel();
-        JLabel text = new JLabel("<html>มีคนป่วย 20-29% ของประชากรในพื้นที่</html>");
-
-        color_box.setSize(50,50);
-        color_box.setLocation(0,15);
-        color_box.setBackground(Color.ORANGE);
-
-        text.setFont(new Font("Tahoma", Font.BOLD, 10));
-        text.setSize(105,60);
-        text.setLocation(55,10);
-        text.setForeground(Color.WHITE);
-
-        panorang.add(color_box);
-        panorang.add(text);
-    }
-
-    void setPanyellow() {
-        panyellow.setSize(160,90);
-        panyellow.setLocation(10,190);
-        panyellow.setBackground(new Color(159,160,159));
-        panyellow.setLayout(null);
-
-        JPanel color_box = new JPanel();
-        JLabel text = new JLabel("<html>มีคนป่วย 10-19% ของประชากรในพื้นที่</html>");
-
-        color_box.setSize(50,50);
-        color_box.setLocation(0,15);
-        color_box.setBackground(Color.YELLOW);
-
-        text.setFont(new Font("Tahoma", Font.BOLD, 10));
-        text.setSize(105,60);
-        text.setLocation(55,10);
-        text.setForeground(Color.WHITE);
-
-        panyellow.add(color_box);
-        panyellow.add(text);
-    }
-
-    void setPangreen() {
-        pangreen.setSize(160,90);
-        pangreen.setLocation(10,280);
-        pangreen.setBackground(new Color(159,160,159));
-        pangreen.setLayout(null);
-
-        JPanel color_box = new JPanel();
-        JLabel text = new JLabel("<html>มีคนป่วย 0-9% ของประชากรในพื้นที่</html>");
-
-        color_box.setSize(50,50);
-        color_box.setLocation(0,15);
-        color_box.setBackground(Color.GREEN);
-
-        text.setFont(new Font("Tahoma", Font.BOLD, 10));
-        text.setSize(105,60);
-        text.setLocation(55,10);
-        text.setForeground(Color.WHITE);
-
-        pangreen.add(color_box);
-        pangreen.add(text);
+        return panel;
     }
 }

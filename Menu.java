@@ -15,7 +15,7 @@ public class Menu {
 class MyFramework extends JFrame{
     JLabel jLabel = new JLabel("PM 2.5");
     JPanel jPanel1 = new JPanel();
-    ImageIcon img = new ImageIcon("Img_menu.jpg");
+    ImageIcon img = new ImageIcon("Image\\\\Img_menu.jpg");
     Image image1 = img.getImage();
     Image image2 = image1.getScaledInstance(900,600,Image.SCALE_SMOOTH);
     ImageIcon imageIcon1 = new ImageIcon(image2);
