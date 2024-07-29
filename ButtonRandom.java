@@ -22,7 +22,7 @@ public class ButtonRandom extends JPanel{
 
         to.setSize(20,20);
         to.setLocation(75,25);
-        to.setFont(new Font("Arial", Font.BOLD, 15));
+        to.setFont(new Font("Arial", Font.PLAIN, 15));
         
         text_box1.setSize(60,20);
         text_box1.setLocation(10,25);
