@@ -5,14 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Home {
-    public static void main(String[] args) {
-        MyFrame frame = new MyFrame();
-        frame.setVisible(true);
-    }
-}    
-
-class MyFrame extends JFrame{
+class Process extends JFrame{
     JPanel pan1 = new JPanel();
     JPanel panside2 = new JPanel();
     JPanel background = new JPanel();
@@ -23,10 +16,10 @@ class MyFrame extends JFrame{
     JLabel percen = new JLabel("<html>PercentPatient = 20%</html>");
     Font font = new Font("Tahoma", Font.BOLD, 12);
 
-    public MyFrame() {
+    public Process() {
         setSize(900,600);
         setLocation(400,200);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);
         
         background.setSize(getWidth(),getHeight());
