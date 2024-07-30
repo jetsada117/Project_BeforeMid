@@ -5,24 +5,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Organizer {
-    public static void main(String[] args){
-    MyFrameOR frame = new MyFrameOR();
-    frame.setVisible(true);
-    }
-}
-
-class MyFrameOR extends JFrame{
+class Organizer extends JFrame{
     JPanel background = new JPanel();
     JLabel text = new JLabel("<html><div style='width:600px'>นายเจษฎา พรหมบุตร 66011212160<br><br>นายนฤพล ท่าสะอาด 66011212182<br><br>นายณัฐพงษ์ จันทร์คำพา 66011212087</div></html>"); 
     JLabel box_1 = new JLabel(getImage("Image\\No1.png",180,250));
     JLabel box_2 = new JLabel(getImage("Image\\No2.png",180,250));
     JLabel box_3 = new JLabel(getImage("Image\\No3.png",180,250));
 
-    public MyFrameOR(){
+    public Organizer(){
         setSize(900,600);
         setLocation(400,200);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);        
         
         background.setSize(900,600);

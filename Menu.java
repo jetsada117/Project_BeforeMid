@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
@@ -53,6 +55,7 @@ class MyFramework extends JFrame{
         buttonend.setSize(200, 60);
         buttonend.setLocation(350, 350);
         buttonend.setText("EXIT");
+
         
         text.setSize(300, 120);
         text.setLocation(350, 20);
@@ -72,7 +75,7 @@ class MyFramework extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 // set flag โปรแกรมมีการทำงานอยู่แล้วจะไม่แสดงซ้ำ
                 if (!isFrameShow) {
-                    Click(e);
+                    ClickSt(e);
                     isFrameShow = true;
                 }
             }
@@ -92,10 +95,49 @@ class MyFramework extends JFrame{
             }
             
         });
+
+        buttonor.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // set flag โปรแกรมมีการทำงานอยู่แล้วจะไม่แสดงซ้ำ
+                if (!isFrameShow) {
+                    ClickOr(e);
+                    isFrameShow = true;
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {}
+
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                isFrameShow = false;
+            }
+            
+        });
+
+        buttonend.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {            
+                System.exit(0);
+            }});
     }
 
-    void Click(MouseEvent e) {
+    void ClickSt(MouseEvent e) {
         Process frame = new Process();
+        frame.setVisible(true);
+    }
+
+    void ClickOr(MouseEvent ex) {
+        Organizer frame = new Organizer();
         frame.setVisible(true);
     }
 }
