@@ -29,4 +29,8 @@ public class ButtonFile extends JPanel{
         add(text_box);
         add(confirm);
     }
+
+    JButton getConfirm() {
+        return confirm;
+    }
 }

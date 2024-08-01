@@ -1,11 +1,13 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class Process extends JFrame{
+class Process extends JFrame implements MouseListener{
     JPanel pan1 = new JPanel();
     JPanel panside2 = new JPanel();
     JPanel background = new JPanel();
@@ -16,6 +18,8 @@ class Process extends JFrame{
     JLabel percen = new JLabel("<html>PercentPatient = 20%</html>");
     Font font = new Font("Tahoma", Font.BOLD, 12);
 
+    ButtonFile file = new ButtonFile();
+        
     public Process() {
         setSize(900,600);
         setLocation(400,200);
@@ -84,5 +88,36 @@ class Process extends JFrame{
         add(panside2);
         add(footer);
         add(background);
+
+        file.getConfirm().addMouseListener(this);
+    }
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // if (e.getSource() == file.getConfirm()) {
+            System.out.println("Button file clicked!");
+            clickfile(e);
+        // }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {}
+
+
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+
+
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+
+
+    @Override
+    public void mouseExited(MouseEvent e) {}
+
+    
+    void clickfile(MouseEvent e) {
+        System.out.println("Hello World!");
     }
 }
