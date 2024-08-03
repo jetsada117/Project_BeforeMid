@@ -18,7 +18,7 @@ public class Menu {
 class MyFramework extends JFrame implements MouseListener{
     JLabel text = new JLabel("PM 2.5");
     JPanel background = new JPanel();
-    ImageIcon img = new ImageIcon("Image\\\\Img_menu.jpg");
+    ImageIcon img = new ImageIcon("Image\\Img_menu.jpg");
     Image image1 = img.getImage();
     Image image2 = image1.getScaledInstance(900,600,Image.SCALE_SMOOTH);
     ImageIcon imageIcon1 = new ImageIcon(image2);

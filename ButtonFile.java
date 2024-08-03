@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.plaf.FileChooserUI;
 
 public class ButtonFile extends JPanel implements ActionListener {
     JLabel text = new JLabel("INPUT FILE");
@@ -36,6 +37,8 @@ public class ButtonFile extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("You clicked the button!");
+        Filechooser choose = new FileChooser() {
+            
+        };
     }
 }
