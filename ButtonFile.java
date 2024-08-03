@@ -1,10 +1,12 @@
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ButtonFile extends JPanel{
+public class ButtonFile extends JPanel implements ActionListener {
     JLabel text = new JLabel("INPUT FILE");
     JTextField text_box = new JTextField();
     JButton confirm = new JButton("SELECT");
@@ -28,9 +30,12 @@ public class ButtonFile extends JPanel{
         add(text);
         add(text_box);
         add(confirm);
+
+        confirm.addActionListener(this);
     }
 
-    JButton getConfirm() {
-        return confirm;
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("You clicked the button!");
     }
 }

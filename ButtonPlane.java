@@ -11,6 +11,7 @@ public class ButtonPlane extends JPanel {
         setLocation(700,10);
         setLayout(null);
         setBackground(new Color(159,160,159));
+        setBorder(null);
 
         ImageIcon imageIcon = new ImageIcon("Image\\\\Plane.png");
         Image image = imageIcon.getImage();
@@ -20,6 +21,7 @@ public class ButtonPlane extends JPanel {
         JButton button = new JButton(imageIcon);      
         button.setBackground(new Color(159,160,159));
         button.setBounds(0, 0, getWidth(), 120);
+        button.setBorder(null);
         add(button);
     }
 }
