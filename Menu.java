@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -25,34 +26,34 @@ class MyFramework extends JFrame implements MouseListener{
     JLabel imgback = new JLabel(imageIcon1);        
     JButton ButtonStart = new JButton();
     JButton buttonor = new JButton();          
-    JButton buttonend = new JButton(); 
+    JButton buttonend = new JButton();
+
     boolean isFrameShow = false;
 
     public MyFramework(){
         setSize(900,600);
         setLocation(400,200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(null);
 
         background.setSize(900,600);
-        background.setLocation(0,-5);
+        background.setLocation(0,-10);
         background.setBackground(Color.WHITE);
+        background.setLayout(new BorderLayout());
+        Font font = new Font("Arial", Font.BOLD, 20); 
 
-        
-
-        ButtonStart.setFont(new Font("Arial", Font.BOLD, 20));
+        ButtonStart.setFont(font);
         ButtonStart.setSize(200, 60);
         ButtonStart.setLocation(350, 150);
         ButtonStart.setText("START");  
 
 
-        buttonor.setFont(new Font("Arial", Font.BOLD, 20));
+        buttonor.setFont(font);
         buttonor.setSize(200, 60);
         buttonor.setLocation(350, 250);
         buttonor.setText("ORGANIZER");
 
 
-        buttonend.setFont(new Font("Arial", Font.BOLD, 20));
+        buttonend.setFont(font);
         buttonend.setSize(200, 60);
         buttonend.setLocation(350, 350);
         buttonend.setText("EXIT");
