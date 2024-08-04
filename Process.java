@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 class Process extends JFrame{
-    JPanel pan1 = new JPanel();
+    JPanel pancenter = new JPanel();
     JPanel panside2 = new JPanel();
     JPanel background = new JPanel();
     JLabel dust = new JLabel("<html>Dust = 100</html>");
@@ -62,11 +62,11 @@ class Process extends JFrame{
         panside2.add(heal);
         panside2.add(pantient);        
         panside2.add(percen);
-        
-        pan1.setSize(530,420);
-        pan1.setLocation(184,0);        
-        pan1.setLayout(new GridLayout(10,20));
-        pan1.setBackground(new Color(211,211,211));
+
+        pancenter.setSize(530,420);
+        pancenter.setLocation(184,0);        
+        pancenter.setLayout(new GridLayout(10,20));
+        pancenter.setBackground(new Color(211,211,211));
 
         ButtonPM buttonPM = new ButtonPM(10, 20);
 
@@ -76,11 +76,11 @@ class Process extends JFrame{
 
         for (int i = 0; i < buttonPM.getRow(); i++) {
             for (int j = 0; j < buttonPM.getCol(); j++) {
-                pan1.add(buttonPM.getButton(i, j));
+                pancenter.add(buttonPM.getButton(i, j));
             }
         }
 
-        add(pan1);
+        add(pancenter);
         add(sidLeftBar);
         add(panside2);
         add(footer);
