@@ -86,8 +86,10 @@ public class ButtonFile extends JPanel implements ActionListener {
                 System.out.println();
             }
 
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } catch (IOException e1) {
+            System.out.println(e1.getMessage());
+        } catch (NumberFormatException e2) {
+            System.out.println("Invalid data format");
         }
 
         return valuePm;

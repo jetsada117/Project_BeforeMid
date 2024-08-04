@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Menu {
-    public static void main(String[] in){
+    public static void main(String[] args){
         MyFramework frame = new MyFramework();
         frame.setVisible(true);  
     }
@@ -75,7 +75,6 @@ class MyFramework extends JFrame implements MouseListener{
         buttonor.addMouseListener(this);
         buttonend.addMouseListener(this);
     }
-
     void ClickSt(MouseEvent e) {
         Process frame = new Process();
         frame.setVisible(true);
@@ -85,7 +84,6 @@ class MyFramework extends JFrame implements MouseListener{
         Organizer frame = new Organizer();
         frame.setVisible(true);
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == ButtonStart) {
@@ -105,7 +103,6 @@ class MyFramework extends JFrame implements MouseListener{
             System.exit(0); // close program
         }
     }
-
     @Override
     public void mousePressed(MouseEvent e) {}
 
