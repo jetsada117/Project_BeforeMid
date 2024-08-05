@@ -1,10 +1,12 @@
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ButtonRandom extends JPanel{
+public class ButtonRandom extends JPanel implements ActionListener {
     JLabel text = new JLabel("INPUT RANDOM POPULATION");
     JLabel to = new JLabel("To");
     JTextField text_box1 = new JTextField();
@@ -39,5 +41,24 @@ public class ButtonRandom extends JPanel{
         add(text_box1);
         add(text_box2);
         add(confirm);
+
+        confirm.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        getValuerandom();
+    }
+
+    int getValuerandom() {
+        // int min = Integer.parseInt(text_box1.getText());
+        // int max = Integer.parseInt(text_box2.getText());
+
+        // if(min > max){
+        //     System.out.println("Minimum value must be less than or equal to maximum value.");
+        //     return 0;
+        // }
+        int i = 0;
+        return i;
     }
 }

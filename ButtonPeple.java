@@ -1,10 +1,12 @@
 import java.awt.Font;
 import java.awt.Label;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class ButtonPeple extends JPanel{
+public class ButtonPeple extends JPanel implements ActionListener {
     JButton confirm = new JButton("CONFIRM");
     Label text = new Label("INPUT POPULATION");
     TextField text_box = new TextField();
@@ -32,5 +34,25 @@ public class ButtonPeple extends JPanel{
         add(confirm);
         add(text);
         add(text_box);
+
+        confirm.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        getValuepeople();
+    }
+
+    int getValuepeople() {
+        int value = 0;
+        try {
+            String message = text_box.getText();
+            value = Integer.parseInt(message);
+            System.out.println("value: " + value);
+        } catch (NumberFormatException e) {
+            text_box.setText("Please enter a number");
+        }
+
+        return value;
     }
 }
