@@ -34,6 +34,7 @@ class MyFramework extends JFrame implements MouseListener{
         setSize(900,600);
         setLocation(400,200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
 
         background.setSize(900,600);
         background.setLocation(0,-10);
