@@ -12,8 +12,8 @@ public class RightBar extends JPanel {
     Font font = new Font("Tahoma", Font.BOLD, 12);
 
     public RightBar() {
-        setSize(180,420);
-        setLocation(718,0);
+        setSize(190,420);
+        setLocation(700,0);
         setBackground(new Color(159,160,159));
         setLayout(null);
 

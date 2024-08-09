@@ -10,16 +10,18 @@ class Process extends JFrame{
         
     public Process() {
         setSize(900,600);
-        setLocation(400,200);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
+        setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         
-        background.setSize(getWidth(),getHeight());
+        background.setSize(900,600);
         background.setLocation(0,0); 
-        background.setBackground(new Color(211,211,211));         
+        background.setBackground(new Color(211,211,211));  
+        background.setLayout(new BorderLayout());       
         
-        pancenter.setSize(530,420);
-        pancenter.setLocation(184,0);        
+        pancenter.setSize(500,400);
+        pancenter.setLocation(195,0);        
         pancenter.setLayout(new GridLayout(10,20));
         pancenter.setBackground(new Color(211,211,211));
 

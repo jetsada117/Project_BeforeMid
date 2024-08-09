@@ -77,7 +77,7 @@ public class ButtonFile extends JPanel implements ActionListener {
 
             for (int row = 0; (line = reader.readLine()) != null ; row++) {
                 // แยกตัวเลขโดยใช้ช่องว่างอย่างน้อย 1 ตัว          
-                data = line.split("\\s+");            
+                data = line.split("\\s");            
                 
                 for (int i = 0; i < data.length; i++) {
                     valuePm[row][i] = Integer.parseInt(data[i]);
@@ -85,6 +85,8 @@ public class ButtonFile extends JPanel implements ActionListener {
                 }
                 System.out.println();
             }
+
+            reader.close();
 
         } catch (IOException e1) {
             System.out.println(e1.getMessage());

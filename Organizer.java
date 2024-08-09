@@ -14,8 +14,9 @@ class Organizer extends JFrame{
 
     public Organizer(){
         setSize(900,600);
-        setLocation(400,200);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setResizable(false);
+        setLocationRelativeTo(null);
         setLayout(null);        
         
         background.setSize(900,600);

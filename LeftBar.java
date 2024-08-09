@@ -7,7 +7,7 @@ public class LeftBar extends JPanel{
     Color color = new Color(159,160,159);
 
     LeftBar() {
-        setSize(180,420);
+        setSize(190,420);
         setLocation(0,0);
         setBackground(color);
         setLayout(null);
