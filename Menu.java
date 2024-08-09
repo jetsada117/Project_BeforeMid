@@ -2,8 +2,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,7 +18,8 @@ public class Menu {
         frame.setVisible(true);  
     }
 }
-class MyFramework extends JFrame implements MouseListener{
+
+class MyFramework extends JFrame implements ActionListener, WindowListener{
     JLabel text = new JLabel("PM 2.5");
     JPanel background = new JPanel();
     ImageIcon img = new ImageIcon("Image\\Img_menu.jpg");
@@ -28,7 +31,7 @@ class MyFramework extends JFrame implements MouseListener{
     JButton buttonor = new JButton();          
     JButton buttonend = new JButton();
 
-    boolean isFrameShow = false;
+    boolean isFrameShow = true;
 
     public MyFramework(){
         setSize(900,600);
@@ -73,50 +76,58 @@ class MyFramework extends JFrame implements MouseListener{
         add(background);
 
         // กดปุ่มเพื่อเรียกหน้าถัดไป
-        ButtonStart.addMouseListener(this);
-        buttonor.addMouseListener(this);
-        buttonend.addMouseListener(this);
+        ButtonStart.addActionListener(this);
+        buttonor.addActionListener(this);
+        buttonend.addActionListener(this);
     }
-    void ClickSt(MouseEvent e) {
+    void ClickSt(ActionEvent e) {
         Process frame = new Process();
         frame.setVisible(true);
     }
 
-    void ClickOr(MouseEvent ex) {
+    void ClickOr(ActionEvent e) {
         Organizer frame = new Organizer();
         frame.setVisible(true);
     }
+
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void actionPerformed(ActionEvent e) {        
         if (e.getSource() == ButtonStart) {
             // set flag โปรแกรมมีการทำงานอยู่แล้วจะไม่แสดงซ้ำ
-            if (!isFrameShow) {
+            if (isFrameShow) {
                 ClickSt(e);
-                isFrameShow = true;
+                isFrameShow = false;
             }
-        }
+        } 
         else if (e.getSource() == buttonor) {
-            if (!isFrameShow) {
+            if (isFrameShow) {
                 ClickOr(e);
-                isFrameShow = true;
+                isFrameShow = false;
             }
-        }
+        } 
         else {
             System.exit(0); // close program
         }
+    }  
+      
+    @Override
+    public void windowClosed(WindowEvent e) {
+        isFrameShow = true;
     }
-    @Override
-    public void mousePressed(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {}
+    public void windowOpened(WindowEvent e) {}
+    @Override
+    public void windowClosing(WindowEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {}
-
+    public void windowIconified(WindowEvent e) {}
     @Override
-    public void mouseExited(MouseEvent e) {
-        isFrameShow = false;
-    }
+    public void windowDeiconified(WindowEvent e) {}
+    @Override
+    public void windowActivated(WindowEvent e) {}
+    @Override
+    public void windowDeactivated(WindowEvent e) {}
+
 }
 

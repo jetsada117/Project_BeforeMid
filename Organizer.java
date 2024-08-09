@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class Organizer extends JFrame{
+final class Organizer extends JFrame{
     JPanel background = new JPanel();
     JLabel text = new JLabel("<html><div style='width:600px'>นายเจษฎา พรหมบุตร 66011212160<br><br>นายนฤพล ท่าสะอาด 66011212182<br><br>นายณัฐพงษ์ จันทร์คำพา 66011212087</div></html>"); 
     JLabel box_1 = new JLabel(getImage("Image\\No1.png",180,250));
