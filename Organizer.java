@@ -20,7 +20,7 @@ final class Organizer extends JFrame{
         setLayout(null);        
         
         background.setSize(900,600);
-        background.setLocation(0,0);
+        background.setLocation(0,-10);
 
         box_1.setSize(180,250);
         box_1.setLocation(100,20);

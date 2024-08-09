@@ -27,9 +27,11 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
     Image image2 = image1.getScaledInstance(900,600,Image.SCALE_SMOOTH);
     ImageIcon imageIcon1 = new ImageIcon(image2);
     JLabel imgback = new JLabel(imageIcon1);        
-    JButton ButtonStart = new JButton();
+    JButton buttonstart = new JButton();
     JButton buttonor = new JButton();          
-    JButton buttonend = new JButton();
+    JButton buttonexit = new JButton();
+    private final Process process = new Process();
+    private final Organizer organizer = new Organizer();
 
     boolean isFrameShow = true;
 
@@ -46,22 +48,20 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
         background.setLayout(new BorderLayout());
         Font font = new Font("Arial", Font.BOLD, 20); 
 
-        ButtonStart.setFont(font);
-        ButtonStart.setSize(200, 60);
-        ButtonStart.setLocation(350, 150);
-        ButtonStart.setText("START");  
-
+        buttonstart.setFont(font);
+        buttonstart.setSize(200, 60);
+        buttonstart.setLocation(350, 150);
+        buttonstart.setText("START");  
 
         buttonor.setFont(font);
         buttonor.setSize(200, 60);
         buttonor.setLocation(350, 250);
         buttonor.setText("ORGANIZER");
 
-
-        buttonend.setFont(font);
-        buttonend.setSize(200, 60);
-        buttonend.setLocation(350, 350);
-        buttonend.setText("EXIT");
+        buttonexit.setFont(font);
+        buttonexit.setSize(200, 60);
+        buttonexit.setLocation(350, 350);
+        buttonexit.setText("EXIT");
 
         
         text.setSize(300, 120);
@@ -70,29 +70,30 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
 
         background.add(imgback);
         add(text);
-        add(buttonend);
+        add(buttonexit);
         add(buttonor);
-        add(ButtonStart);
+        add(buttonstart);
         add(background);
 
         // กดปุ่มเพื่อเรียกหน้าถัดไป
-        ButtonStart.addActionListener(this);
+        buttonstart.addActionListener(this);
         buttonor.addActionListener(this);
-        buttonend.addActionListener(this);
+        buttonexit.addActionListener(this);
+        process.addWindowListener(this);
+        organizer.addWindowListener(this);
     }
+
     void ClickSt(ActionEvent e) {
-        Process frame = new Process();
-        frame.setVisible(true);
+        process.setVisible(true);
     }
 
     void ClickOr(ActionEvent e) {
-        Organizer frame = new Organizer();
-        frame.setVisible(true);
+        organizer.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {        
-        if (e.getSource() == ButtonStart) {
+        if (e.getSource() == buttonstart) {
             // set flag โปรแกรมมีการทำงานอยู่แล้วจะไม่แสดงซ้ำ
             if (isFrameShow) {
                 ClickSt(e);
@@ -108,24 +109,28 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
         else {
             System.exit(0); // close program
         }
-    }  
-      
+    }      
+    
     @Override
-    public void windowClosed(WindowEvent e) {
+    public void windowClosing(WindowEvent e) {
         isFrameShow = true;
     }
+      
+    @Override
+    public void windowClosed(WindowEvent e) {}
 
     @Override
     public void windowOpened(WindowEvent e) {}
-    @Override
-    public void windowClosing(WindowEvent e) {}
 
     @Override
     public void windowIconified(WindowEvent e) {}
+
     @Override
     public void windowDeiconified(WindowEvent e) {}
+
     @Override
     public void windowActivated(WindowEvent e) {}
+
     @Override
     public void windowDeactivated(WindowEvent e) {}
 
