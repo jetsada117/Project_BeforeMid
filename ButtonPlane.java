@@ -5,7 +5,7 @@ import javax.swing.JButton;
 
 
 public class ButtonPlane extends JButton{
-
+    
     public ButtonPlane() {
         ImageIcon imageIcon = new ImageIcon("Image\\Plane.png");
         Image image = imageIcon.getImage();
@@ -17,5 +17,4 @@ public class ButtonPlane extends JButton{
         setBounds(700, 10, 180, 130);
         setBorder(null);
     }
-
 }
