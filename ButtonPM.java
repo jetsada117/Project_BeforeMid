@@ -4,8 +4,11 @@ public class ButtonPM extends Button{
     private int pm;
     private int people;
 
-    ButtonPM(int pm,int people) {
+    void setPm(int pm) {
         this.pm = pm;
+    }
+
+    void setPeople(int people) {
         this.people = people;
     }
     
