@@ -1,10 +1,12 @@
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class ButtonPlane extends JPanel {
+public class ButtonPlane extends JPanel implements ActionListener{
 
     public ButtonPlane() {
         setSize(180,130);
@@ -23,5 +25,10 @@ public class ButtonPlane extends JPanel {
         button.setBounds(0, 0, getWidth(), 120);
         button.setBorder(null);
         add(button);
+
+        button.addActionListener(this);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {}
 }

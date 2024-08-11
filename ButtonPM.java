@@ -1,32 +1,20 @@
 import java.awt.Button;
 
-public class ButtonPM {
-    private int col;
-    private int row;
-    private Button [][] buttons;
+public class ButtonPM extends Button{
+    private int pm;
+    private int people;
 
-    ButtonPM(int col,int row) {
-        this.col = col;
-        this.row = row;
-        this.buttons = new Button[this.row][this.col];
-
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                this.buttons[i][j] = new Button("");
-            }
-        }
-    }
-
-    Button getButton(int row, int col) {
-        return this.buttons[row][col];
-    }
-
-    int getCol() {
-        return this.col;
+    ButtonPM(int pm,int people) {
+        this.pm = pm;
+        this.people = people;
     }
     
-    int getRow() {
-        return this.row;
+    int getPm() {
+        return pm;
+    }
+
+    int getPeople() {
+        return people;
     }
 }
 

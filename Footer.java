@@ -9,7 +9,7 @@ public class Footer extends JPanel {
         setBackground(new Color(159,160,159));
 
         ButtonFile btnFile = new ButtonFile();
-        ButtonPeple btnPP = new ButtonPeple();
+        ButtonPeople btnPP = new ButtonPeople();
         ButtonRandom btnRan = new ButtonRandom();
         ButtonRain btnRain = new ButtonRain();
         ButtonPlane btnPlane = new ButtonPlane();

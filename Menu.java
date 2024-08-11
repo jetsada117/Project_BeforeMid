@@ -33,7 +33,7 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
     private final Process process = new Process();
     private final Organizer organizer = new Organizer();
 
-    boolean isFrameShow = true;
+    boolean isframeshow = true;
 
     public MyFramework(){
         setSize(900,600);
@@ -83,11 +83,11 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
         organizer.addWindowListener(this);
     }
 
-    void ClickSt(ActionEvent e) {
+    void ClickStart(ActionEvent e) {
         process.setVisible(true);
     }
 
-    void ClickOr(ActionEvent e) {
+    void ClickOrgan(ActionEvent e) {
         organizer.setVisible(true);
     }
 
@@ -95,15 +95,15 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
     public void actionPerformed(ActionEvent e) {        
         if (e.getSource() == buttonstart) {
             // set flag โปรแกรมมีการทำงานอยู่แล้วจะไม่แสดงซ้ำ
-            if (isFrameShow) {
-                ClickSt(e);
-                isFrameShow = false;
+            if (isframeshow) {
+                ClickStart(e);
+                isframeshow = false;
             }
         } 
         else if (e.getSource() == buttonor) {
-            if (isFrameShow) {
-                ClickOr(e);
-                isFrameShow = false;
+            if (isframeshow) {
+                ClickOrgan(e);
+                isframeshow = false;
             }
         } 
         else {
@@ -113,7 +113,7 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
     
     @Override
     public void windowClosing(WindowEvent e) {
-        isFrameShow = true;
+        isframeshow = true;
     }
       
     @Override
