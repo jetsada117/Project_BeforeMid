@@ -15,23 +15,26 @@ import javax.swing.JPanel;
 class Process extends JFrame implements ActionListener {
     JPanel pancenter = new JPanel();
     JPanel background = new JPanel();
-    LeftBar sidLeftBar = new LeftBar();
-    RightBar sidRightBar = new RightBar();
-    private final JPanel footer = new JPanel();
-    private final JPanel panfile = new JPanel();
-    private final JPanel panpeople = new JPanel();
-    private final JPanel panrandom = new JPanel();   
     TextField file_box = new TextField();     
     TextField people_box = new TextField();
     TextField start_box = new TextField();
     TextField end_box = new TextField();
-    ButtonFile file = new ButtonFile();
+    ButtonFile file = new ButtonFile();        
+    JLabel dust = new JLabel();
+    JLabel population = new JLabel();
+    JLabel heal = new JLabel();
+    JLabel pantient = new JLabel();
+    JLabel percen = new JLabel();
     ButtonPeople people = new ButtonPeople();
     ButtonRandom random = new ButtonRandom();
     ButtonPlane plane = new ButtonPlane();
     ButtonRain rain = new ButtonRain();
         
-    public Process() {
+    public Process() {    
+        JPanel leftbar = new JPanel();
+        JPanel rightbar = new JPanel();
+        JPanel footer = new JPanel();
+
         setSize(900,600);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -42,17 +45,19 @@ class Process extends JFrame implements ActionListener {
         background.setLocation(0,0); 
         background.setBackground(new Color(211,211,211));  
         background.setLayout(new BorderLayout());       
-        
+
         pancenter.setSize(500,400);
         pancenter.setLocation(195,0);        
         pancenter.setLayout(new GridLayout(10,20,0,2));
         pancenter.setBackground(new Color(211,211,211));
 
-        setFooter();
+        setLeftbar(leftbar);        
+        setRightbar(rightbar);
+        setFooter(footer);
 
-        add(pancenter, BorderLayout.CENTER);
-        add(sidLeftBar);
-        add(sidRightBar);
+        add(pancenter);
+        add(leftbar);
+        add(rightbar);
         add(footer);
         add(background);
 
@@ -146,8 +151,11 @@ class Process extends JFrame implements ActionListener {
                 else if (e.getSource() == random) {
                     button.setPm(Pm[i][j]);
                     button.setPeople(random.getRandomNumber());
-                }
+                }        
 
+                button.setPercents();
+                button.setPantient();
+                button.setHealthy();
 
                 if (Pm[i][j] > 150) {
                     button.setBackground(Color.RED);
@@ -167,9 +175,13 @@ class Process extends JFrame implements ActionListener {
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        int x = button.getPm();
-                        int y = button.getPeople();
-                        System.out.println(x + " " + y);
+                        int pm = button.getPm();
+                        int people = button.getPeople();
+                        int healthy = button.getHealthy();
+                        int pantient = (int)button.getPantient();
+                        int percents = button.getPercents();
+
+                        showRightbar(pm, people, healthy, pantient, percents);
                     }
                 });
             }
@@ -198,24 +210,95 @@ class Process extends JFrame implements ActionListener {
         }
     }
 
-    private void setFooter() {
-        footer.setSize(900,177);
-        footer.setLocation(0,423);
-        footer.setLayout(null);
-        footer.setBackground(new Color(159,160,159));
+    private void setLeftbar(JPanel panel) {
+        Color color = new Color(159,160,159);
 
-        setPanfile();
-        setPanpeople();
-        setPanrandom();
+        panel.setSize(190,420);
+        panel.setLocation(0,0);
+        panel.setBackground(color);
+        panel.setLayout(null);
 
-        footer.add(panfile);
-        footer.add(panpeople);
-        footer.add(panrandom);
-        footer.add(plane);
-        footer.add(rain);
+        panel.add(getPanelcolor(color, Color.RED,"<html>มีคนป่วยเกิน 30% ของประชากรในพื้นที่</html>", Color.WHITE,10,10));        
+        panel.add(getPanelcolor(color, Color.ORANGE,"<html>มีคนป่วย 20-29% ของประชากรในพื้นที่</html>", Color.WHITE,10,100));
+        panel.add(getPanelcolor(color, Color.YELLOW,"<html>มีคนป่วย 10-19% ของประชากรในพื้นที่</html>", Color.WHITE,10,190));
+        panel.add(getPanelcolor(color, Color.GREEN,"<html>มีคนป่วย 0-9% ของประชากรในพื้นที่</html>", Color.WHITE,10,280));        
     }
 
-    private void setPanfile() {        
+    private JPanel getPanelcolor(Color background,Color box,String text,Color ctext, int x, int y) {
+        JPanel panel = new JPanel();
+        panel.setSize(160,90);
+        panel.setLocation(x,y);
+        panel.setBackground(background);
+        panel.setLayout(null);
+
+        JPanel color_box = new JPanel();
+        JLabel text_label = new JLabel(text);
+
+        color_box.setSize(50,50);
+        color_box.setLocation(0,15);
+        color_box.setBackground(box);
+
+        text_label.setFont(new Font("Tahoma", Font.BOLD, 10));
+        text_label.setSize(105,60);
+        text_label.setLocation(55,10);
+        text_label.setForeground(ctext);
+
+        panel.add(color_box);
+        panel.add(text_label);
+
+        return panel;
+    }
+
+    private void setRightbar(JPanel panel) {
+        Font font = new Font("Tahoma", Font.BOLD, 12);
+
+        panel.setSize(190,420);
+        panel.setLocation(700,0);
+        panel.setBackground(new Color(159,160,159));
+        panel.setLayout(null);
+
+        setLocaRightbar(dust, font, 10, 10, 160, 50);
+        setLocaRightbar(population, font, 10, 65, 160, 50);
+        setLocaRightbar(heal, font, 10, 120, 160, 50);
+        setLocaRightbar(pantient, font, 10, 175, 160, 50);
+        setLocaRightbar(percen, font, 10, 230, 160, 50);
+
+        panel.add(dust);
+        panel.add(population);
+        panel.add(heal);
+        panel.add(pantient);
+        panel.add(percen);
+    }
+
+    private void showRightbar(int d, int po, int h, int pan, int per) {
+        dust.setText("Dust  :  "+ d);
+        population.setText("Population  :  "+ po);
+        heal.setText("Healthy  :  "+ h);
+        pantient.setText("Patiant  :  "+ pan);
+        percen.setText("Percent Patient  :  "+ per +" % ");
+    }
+
+    private void setLocaRightbar(JLabel label, Font font, int x, int y, int width, int height) {      
+        label.setBounds(x,y,width,height);
+        label.setFont(font);
+        label.setForeground(Color.WHITE);
+    }
+
+    private void setFooter(JPanel panel) {
+        panel.setSize(900,177);
+        panel.setLocation(0,423);
+        panel.setLayout(null);
+        panel.setBackground(new Color(159,160,159));
+
+        panel.add(setPanfile());
+        panel.add(setPanpeople());
+        panel.add(setPanrandom());
+        panel.add(plane);
+        panel.add(rain);
+    }
+
+    private JPanel setPanfile() {      
+        JPanel panfile = new JPanel();
         JLabel text = new JLabel("INPUT FILE");
         Font font = new Font("Arial", Font.BOLD, 10);
 
@@ -234,11 +317,13 @@ class Process extends JFrame implements ActionListener {
         panfile.add(text);
         panfile.add(file_box);
         panfile.add(file);
+
+        return panfile;
     }
 
-    private void setPanpeople() {
+    private JPanel setPanpeople() {
+        JPanel panpeople = new JPanel();
         Label text = new Label("INPUT POPULATION");
-
 
         panpeople.setSize(130,100);
         panpeople.setLocation(200,20);
@@ -255,9 +340,12 @@ class Process extends JFrame implements ActionListener {
         panpeople.add(text);
         panpeople.add(people_box);
         panpeople.add(people);
+
+        return panpeople;
     }
 
-    private void setPanrandom() {
+    private JPanel setPanrandom() {
+        JPanel panrandom = new JPanel();  
         JLabel text = new JLabel("INPUT RANDOM POPULATION");
         JLabel to = new JLabel("To");
 
@@ -282,5 +370,7 @@ class Process extends JFrame implements ActionListener {
         panrandom.add(start_box);
         panrandom.add(end_box);
         panrandom.add(random);
+
+        return panrandom;
     }
 }
