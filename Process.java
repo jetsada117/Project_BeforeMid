@@ -10,6 +10,7 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 class Process extends JFrame implements ActionListener {
@@ -105,18 +106,21 @@ class Process extends JFrame implements ActionListener {
         }
         else {
             // เมื่อกด Cancel จะไม่มีการเลือกไฟล์
-            System.out.println("No File Selected");
+            JOptionPane.showMessageDialog(null, "NO FILE SELECT","ALERT", JOptionPane.WARNING_MESSAGE);
         }
 
         System.out.println(file.getFilepath());
-        int [][] pm = file.getValuePm();
+        if (file.getFilepath() != null) {
+            int [][] pm = file.getValuePm();
 
-        for(int i = 0; i < 10 ; i++) {
-            for(int j = 0; j < 20 ; j++) {
-                System.out.print(pm[i][j] + " ");
+            for(int i = 0; i < 10 ; i++) {
+                for(int j = 0; j < 20 ; j++) {
+                    System.out.print(pm[i][j] + " ");
+                }
+                System.out.println();
             }
-            System.out.println();
         }
+
     }
 
     void setPeople(ActionEvent e) {
@@ -125,14 +129,13 @@ class Process extends JFrame implements ActionListener {
             String message = people_box.getText();
             int value = Integer.parseInt(message);
             people.setPeople(value);
-            System.out.println("value: " + people.getPeople());
                              
             if ((file.getValuePm() != null)) {
                 showButton(e);
-                System.out.println("Successfully");
             }
         } catch (NumberFormatException ex) {
-            System.out.println("Please enter a number");
+            // เมื่อไม่มีการใส่จำนวนประชากรหรือใส่จำนวนประชากรไม่ถูกต้องจะมีการแจ้งเตือน
+            JOptionPane.showMessageDialog(null, "Please enter a number","ALERT", JOptionPane.WARNING_MESSAGE);
         }
 
     }
@@ -177,7 +180,7 @@ class Process extends JFrame implements ActionListener {
                         
                         enabledPlane = false;
                     }
-                    
+
                     button[x][y].setPercents();
                     button[x][y].setPantient();
                     button[x][y].setHealthy();
@@ -225,15 +228,21 @@ class Process extends JFrame implements ActionListener {
             int startValue = Integer.parseInt(start);
             int endValue = Integer.parseInt(end);
 
-            random.setStart(startValue);
-            random.setEnd(endValue);
+            if (startValue  < endValue) {
+                random.setStart(startValue);
+                random.setEnd(endValue);
 
-            if ((file.getValuePm() != null)) {
-                showButton(e);
-                System.out.println("Successfully");
+                if ((file.getValuePm() != null)) {
+                    showButton(e);
+                    System.out.println("Successfully");
+                }
+            } 
+            else {
+                JOptionPane.showMessageDialog(null, "Start value should be less than end value","ALERT", JOptionPane.WARNING_MESSAGE);
             }
+
         } catch (NumberFormatException ex) {
-            System.out.println("Please enter a number");
+            JOptionPane.showMessageDialog(null, "Please enter a number","ALERT", JOptionPane.WARNING_MESSAGE);
         }
     }
 
