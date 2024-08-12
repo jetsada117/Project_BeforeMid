@@ -29,7 +29,8 @@ class Process extends JFrame implements ActionListener {
     ButtonRandom random = new ButtonRandom();
     ButtonPlane plane = new ButtonPlane();
     ButtonRain rain = new ButtonRain();
-    boolean enabled = false;
+    ButtonPM [][] button = new ButtonPM[10][20];
+    boolean enabledPlane = false;
         
     public Process() {    
         JPanel leftbar = new JPanel();
@@ -78,9 +79,9 @@ class Process extends JFrame implements ActionListener {
         } else if (e.getSource() == random) {
             setRandom(e);
         } else if (e.getSource() == plane) {
-            setPlane();
+            setPlane(e);
         } else if (e.getSource() == rain) {
-            System.out.println("Rain");
+            setRain(e);
         }
     }
 
@@ -139,7 +140,6 @@ class Process extends JFrame implements ActionListener {
     void showButton(ActionEvent e) {
         pancenter.removeAll();
 
-        ButtonPM [][] button = new ButtonPM[10][20];
         int [][] Pm = file.getValuePm();
         int value = people.getPeople();
 
@@ -167,84 +167,54 @@ class Process extends JFrame implements ActionListener {
                 final int x = i;
                 final int y = j;
 
-                button[i][j].addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-
-                        if(enabled) {
-                            int row = button[x][y].getRow();
-                            int column = button[x][y].getColumn();
-                            System.out.println("Plane Position: (" + row + ", " + column + ")");
-
-                            for(int i = 0; i < 10 ; i++) {
-                                for(int j = 0; j < 20; j++) {
-
-                                    if(i == row-1 && j == column-1) {
-                                        int reduce = Pm[i][j] - (Pm[i][j]*30/100);
-                                        button[i][j].setPm(reduce);
-                                        button[i][j].setBackgroundColor();
-                                    }
-                                    else if(i == row-1 && j == column) {
-                                        int reduce = Pm[i][j] - (Pm[i][j]*30/100);
-                                        button[i][j].setPm(reduce);
-                                        button[i][j].setBackgroundColor();
-                                    }
-                                    else if(i == row-1 && j == column+1) {
-                                        int reduce = Pm[i][j] - (Pm[i][j]*30/100);
-                                        button[i][j].setPm(reduce);
-                                        button[i][j].setBackgroundColor();
-                                    }
-                                    else if(i == row && j == column-1) {
-                                        int reduce = Pm[i][j] - (Pm[i][j]*30/100);
-                                        button[i][j].setPm(reduce);
-                                        button[i][j].setBackgroundColor();
-                                    }
-                                    else if(i == row && j == column) {
-                                        int reduce = Pm[i][j] - (Pm[i][j]*50/100);
-                                        button[i][j].setPm(reduce);
-                                        button[i][j].setBackgroundColor();
-                                    }
-                                    else if(i == row && j == column+1) {
-                                        int reduce = Pm[i][j] - (Pm[i][j]*30/100);
-                                        button[i][j].setPm(reduce);
-                                        button[i][j].setBackgroundColor();
-                                    }
-                                    else if(i == row+1 && j == column-1) {
-                                        int reduce = Pm[i][j] - (Pm[i][j]*30/100);
-                                        button[i][j].setPm(reduce);
-                                        button[i][j].setBackgroundColor();
-                                    }
-                                    else if(i == row+1 && j == column) {
-                                        int reduce = Pm[i][j] - (Pm[i][j]*30/100);
-                                        button[i][j].setPm(reduce);
-                                        button[i][j].setBackgroundColor();
-                                    }
-                                    else if(i == row+1 && j == column+1) {
-                                        int reduce = Pm[i][j] - (Pm[i][j]*30/100);
-                                        button[i][j].setPm(reduce);
-                                        button[i][j].setBackgroundColor();
-                                    }
-                                }
-                            }
-                                                    
-                            enabled = false;  
-                            pancenter.revalidate();
-                            pancenter.repaint();
-                        } 
-                                                   
-                        int pm = button[x][y].getPm();   
-                        int people = button[x][y].getPeople();
-                        int healthy = button[x][y].getHealthy();
-                        int pantient = (int)button[x][y].getPantient();
-                        int percents = button[x][y].getPercents();
-
-                        showRightbar(pm, people, healthy, pantient, percents);
+                button[i][j].addActionListener((ActionEvent e1) -> {
+                    if(enabledPlane) {
+                        int row = button[x][y].getRow();
+                        int column = button[x][y].getColumn();
+                        System.out.println("Plane Position: (" + row + ", " + column + ")");
+                        
+                        updatePmAndColor(row, column, button);
+                        
+                        enabledPlane = false;
                     }
+                    
+                    button[x][y].setPercents();
+                    button[x][y].setPantient();
+                    button[x][y].setHealthy();
+
+                    int pm = button[x][y].getPm();
+                    int people1 = button[x][y].getPeople();
+                    int healthy = button[x][y].getHealthy();
+                    int pantient1 = (int)button[x][y].getPantient();
+                    int percents = button[x][y].getPercents();
+                    showRightbar(pm, people1, healthy, pantient1, percents);
                 });
             }
         }
 
         pancenter.revalidate();
+    }
+
+    private void updatePmAndColor(int row, int column, ButtonPM[][] button) {
+        int[] dx = {-1, -1, -1, 0, 0, 0, 1, 1, 1};
+        int[] dy = {-1, 0, 1, -1, 0, 1, -1, 0, 1};
+        int[] reduction = {30, 30, 30, 30, 50, 30, 30, 30, 30}; // ลด 50% ที่ศูนย์กลาง
+    
+        for (int k = 0; k < dx.length; k++) {
+            int i = row + dx[k];
+            int j = column + dy[k];
+    
+            if (i >= 0 && i < 10 && j >= 0 && j < 20) { // ตรวจสอบขอบเขต
+                System.out.println("button "+ i+ " "+ j+ " : " + button[i][j].getPm());
+
+                int reduce = button[i][j].getPm() - (button[i][j].getPm() * reduction[k] / 100);
+                if (reduce < 0) reduce = 0; // ป้องกันไม่ให้ค่าติดลบ
+                button[i][j].setPm(reduce);
+                button[i][j].setBackgroundColor();
+
+                System.out.println("button "+ i+ " "+ j+ " : " + button[i][j].getPm());
+            }
+        }
     }
 
     void setRandom(ActionEvent e) {
@@ -267,8 +237,24 @@ class Process extends JFrame implements ActionListener {
         }
     }
 
-    void setPlane() {
-        enabled = true;
+    void setPlane(ActionEvent e) {
+        if(e.getSource() == plane) {
+            enabledPlane = true;
+        }
+    }
+
+    void setRain(ActionEvent e) {
+        if (e.getSource() == rain) {
+            for (int i = 0; i < 10 ; i++) {
+                for (int j = 0; j < 20 ; j++) {
+                    int newPm = button[i][j].getPm() - 50;
+                    if(newPm < 0) newPm = 0;
+
+                    button[i][j].setPm(newPm);
+                    button[i][j].setBackgroundColor();
+                }
+            } 
+        }
     }
 
     private void setLeftbar(JPanel panel) {
