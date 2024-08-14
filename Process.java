@@ -108,19 +108,6 @@ class Process extends JFrame implements ActionListener {
             // เมื่อกด Cancel จะไม่มีการเลือกไฟล์
             JOptionPane.showMessageDialog(null, "NO FILE SELECT","ALERT", JOptionPane.WARNING_MESSAGE);
         }
-
-        System.out.println(file.getFilepath());
-        if (file.getFilepath() != null) {
-            int [][] pm = file.getValuePm();
-
-            for(int i = 0; i < 10 ; i++) {
-                for(int j = 0; j < 20 ; j++) {
-                    System.out.print(pm[i][j] + " ");
-                }
-                System.out.println();
-            }
-        }
-
     }
 
     void setPeople(ActionEvent e) {
@@ -129,9 +116,14 @@ class Process extends JFrame implements ActionListener {
             String message = people_box.getText();
             int value = Integer.parseInt(message);
             people.setPeople(value);
+            start_box.setText("");
+            end_box.setText("");
                              
             if ((file.getValuePm() != null)) {
                 showButton(e);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Please select a file","ALERT", JOptionPane.WARNING_MESSAGE);
             }
         } catch (NumberFormatException ex) {
             // เมื่อไม่มีการใส่จำนวนประชากรหรือใส่จำนวนประชากรไม่ถูกต้องจะมีการแจ้งเตือน
@@ -171,10 +163,11 @@ class Process extends JFrame implements ActionListener {
                 final int y = j;
 
                 button[i][j].addActionListener((ActionEvent e1) -> {
+
+                    // เช็คว่ามีการกดเครื่องบินก่อนหรือไม่ ถ้ามีจะทำงาน
                     if(enabledPlane) {
                         int row = button[x][y].getRow();
                         int column = button[x][y].getColumn();
-                        System.out.println("Plane Position: (" + row + ", " + column + ")");
                         
                         updatePmAndColor(row, column, button);
                         
@@ -229,15 +222,20 @@ class Process extends JFrame implements ActionListener {
             int endValue = Integer.parseInt(end);
 
             if (startValue  < endValue) {
+                people_box.setText("");
                 random.setStart(startValue);
                 random.setEnd(endValue);
 
                 if ((file.getValuePm() != null)) {
                     showButton(e);
-                    System.out.println("Successfully");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Please select a file","ALERT", JOptionPane.WARNING_MESSAGE);
                 }
             } 
             else {
+                start_box.setText("");
+                end_box.setText("");
                 JOptionPane.showMessageDialog(null, "Start value should be less than end value","ALERT", JOptionPane.WARNING_MESSAGE);
             }
 

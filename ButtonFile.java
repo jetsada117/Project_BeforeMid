@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 public class ButtonFile extends JButton {
     int valuePm [][] = new int[10][20];
@@ -34,11 +35,11 @@ public class ButtonFile extends JButton {
 
             reader.close();        
         } catch (IOException e1) {
-            System.out.println(e1.getMessage());
+            JOptionPane.showMessageDialog(null, "Please select file again!","ALERT", JOptionPane.WARNING_MESSAGE);
         } catch (NumberFormatException e2) {
-            System.out.println("Invalid data format");
+            JOptionPane.showMessageDialog(null, "Please select file again!","ALERT", JOptionPane.WARNING_MESSAGE);
         } catch (NullPointerException e3) {
-            System.out.println("No File Selected");
+            JOptionPane.showMessageDialog(null, "Please select file again!","ALERT", JOptionPane.WARNING_MESSAGE);
         }
     }
 
