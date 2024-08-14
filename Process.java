@@ -53,7 +53,7 @@ class Process extends JFrame implements ActionListener {
         pancenter.setLocation(195,0);        
         pancenter.setLayout(new GridLayout(10,20,0,2));
         pancenter.setBackground(new Color(211,211,211));
-
+        //เรียก Method เพื่อมา set ค่าและตำแหน่ง
         setLeftbar(leftbar);        
         setRightbar(rightbar);
         setFooter(footer);
@@ -115,10 +115,18 @@ class Process extends JFrame implements ActionListener {
         try {
             String message = people_box.getText();
             int value = Integer.parseInt(message);
-            people.setPeople(value);
-            start_box.setText("");
-            end_box.setText("");
-                             
+
+            if(value>=0) {
+                people.setPeople(value);            
+                start_box.setText("");
+                end_box.setText("");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "People less zero","ALERT", JOptionPane.WARNING_MESSAGE);
+                people_box.setText("");
+            }
+
+
             if ((file.getValuePm() != null)) {
                 showButton(e);
             }
@@ -141,9 +149,10 @@ class Process extends JFrame implements ActionListener {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 20; j++) {
                 button[i][j] = new ButtonPM();
-
+                button[i][j].setPosition(i, j);
+                
                 if (e.getSource() == people) {
-                    button[i][j].setPosition(i, j);
+
                     button[i][j].setPm(Pm[i][j]);
                     button[i][j].setPeople(value);
                 }
@@ -221,7 +230,7 @@ class Process extends JFrame implements ActionListener {
             int startValue = Integer.parseInt(start);
             int endValue = Integer.parseInt(end);
 
-            if (startValue  < endValue) {
+            if (startValue  < endValue && startValue >= 0) {
                 people_box.setText("");
                 random.setStart(startValue);
                 random.setEnd(endValue);
@@ -263,6 +272,7 @@ class Process extends JFrame implements ActionListener {
             } 
         }
     }
+//setแถบซ้าย จะมีแถบสีแสดง ปริมาณคนปวย JPanel panel ที่รับมาเป็น atribute ที่ประกาศไว้ด้านบน
 
     private void setLeftbar(JPanel panel) {
         Color color = new Color(159,160,159);
@@ -350,7 +360,7 @@ class Process extends JFrame implements ActionListener {
         panel.add(plane);
         panel.add(rain);
     }
-
+//เลือกไฟล์ PM 2.5
     private JPanel setPanfile() {      
         JPanel panfile = new JPanel();
         JLabel text = new JLabel("INPUT FILE");
@@ -374,7 +384,7 @@ class Process extends JFrame implements ActionListener {
 
         return panfile;
     }
-
+    //ใส่จำนวนประชากร
     private JPanel setPanpeople() {
         JPanel panpeople = new JPanel();
         Label text = new Label("INPUT POPULATION");
@@ -397,7 +407,7 @@ class Process extends JFrame implements ActionListener {
 
         return panpeople;
     }
-
+//สุ่มจำนวนประชากร
     private JPanel setPanrandom() {
         JPanel panrandom = new JPanel();  
         JLabel text = new JLabel("INPUT RANDOM POPULATION");

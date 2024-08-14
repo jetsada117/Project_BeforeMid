@@ -22,11 +22,11 @@ public class Menu {
 class MyFramework extends JFrame implements ActionListener, WindowListener{
     JLabel text = new JLabel("PM 2.5");
     JPanel background = new JPanel();
-    ImageIcon img = new ImageIcon("Image\\Img_menu.jpg");
-    Image image1 = img.getImage();
-    Image image2 = image1.getScaledInstance(900,600,Image.SCALE_SMOOTH);
-    ImageIcon imageIcon1 = new ImageIcon(image2);
-    JLabel imgback = new JLabel(imageIcon1);        
+    ImageIcon img = new ImageIcon("Image\\Img_menu.jpg");//เรียกใฟล์ภาพ
+    Image image1 = img.getImage();//รับ ไฟส์รูป
+    Image image2 = image1.getScaledInstance(900,600,Image.SCALE_SMOOTH);//ปรับขนาดรูป
+    ImageIcon imageIcon1 = new ImageIcon(image2);//set รูปเป็นไอคอน
+    JLabel imgback = new JLabel(imageIcon1);//นำรุปไปsetลง JLabel        
     JButton buttonstart = new JButton();
     JButton buttonor = new JButton();          
     JButton buttonexit = new JButton();
@@ -101,6 +101,7 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
             }
         } 
         else if (e.getSource() == buttonor) {
+            // set flag โปรแกรมมีการทำงานอยู่แล้วจะไม่แสดงซ้ำ
             if (isframeshow) {
                 ClickOrgan(e);
                 isframeshow = false;
@@ -113,7 +114,7 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
     
     @Override
     public void windowClosing(WindowEvent e) {
-        isframeshow = true;
+        isframeshow = true;//จะกำหนดค่า true แล้วส่งค่ากับไปให้สามารถทำงานใหม่
     }
       
     @Override
