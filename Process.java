@@ -97,7 +97,7 @@ class Process extends JFrame implements ActionListener {
         // ให้แสดงจอขึ้นมาแล้วเลือกไฟล์ เมื่อกด Ok เลือกไฟล์แล้วจะส่งค่าของไฟล์มาที่ตัวแปร ถ้ามีไฟล์จะส่งค่ากลับมาเป็น 0 แต่ถ้าไม่มีจะเป็น 1
         int response = filechooser.showOpenDialog(null);
 
-        // เช็คว่ามีไฟล์หรือไม่
+      
         if (response == JFileChooser.APPROVE_OPTION) {
             // เมื่อกดเลือกไฟล์แล้วจะมีการแสดงตำแหน่งไฟล์บน text field
             String filepath = filechooser.getSelectedFile().getAbsolutePath();
@@ -106,7 +106,7 @@ class Process extends JFrame implements ActionListener {
             file_box.setText(filepath);
         }
         else {
-            // เมื่อกด Cancel จะไม่มีการเลือกไฟล์
+         
             JOptionPane.showMessageDialog(null, "NO FILE SELECT","ALERT", JOptionPane.WARNING_MESSAGE);
         }
 
@@ -122,18 +122,20 @@ class Process extends JFrame implements ActionListener {
                 people.setPeople(value);            
                 start_box.setText("");
                 end_box.setText("");
+
+                if (file.getFilepath() != null) {
+                    showButton(e);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Please select a file","ALERT", JOptionPane.WARNING_MESSAGE);
+                }
             }
             else {
                 JOptionPane.showMessageDialog(null, "People less zero","ALERT", JOptionPane.WARNING_MESSAGE);
                 people_box.setText("");
             }
 
-            if (file.getFilepath() != null) {
-                showButton(e);
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Please select a file","ALERT", JOptionPane.WARNING_MESSAGE);
-            }
+            
 
         } catch (NumberFormatException ex) {
             // เมื่อไม่มีการใส่จำนวนประชากรหรือใส่จำนวนประชากรไม่ถูกต้องจะมีการแจ้งเตือน
@@ -154,7 +156,7 @@ class Process extends JFrame implements ActionListener {
                 button[i][j].setPosition(i, j);
                 button[i][j].setPm(Pm[i][j]);
                 
-                // เงื่อนไขว่าเรารับประชากรมาจากปุ่มไหน
+                
                 if (e.getSource() == people) {
 
                     button[i][j].setPeople(value);
@@ -217,7 +219,11 @@ class Process extends JFrame implements ActionListener {
                 int reduce = button[i][j].getPm() - (button[i][j].getPm() * reduction[k] / 100);
                 if (reduce < 0) reduce = 0; // ป้องกันไม่ให้ค่าติดลบ
                 button[i][j].setPm(reduce);
+                button[i][j].setPercents();
+
                 button[i][j].setBackgroundColor();
+
+
             }
         }
     }
@@ -269,6 +275,7 @@ class Process extends JFrame implements ActionListener {
                         if(newPm < 0) newPm = 0;
 
                         button[i][j].setPm(newPm);
+                        button[i][j].setPercents();
                         button[i][j].setBackgroundColor();
                     }
                 } 

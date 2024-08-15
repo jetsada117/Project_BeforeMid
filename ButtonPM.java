@@ -27,7 +27,11 @@ public class ButtonPM extends Button{
     }
 
     void setPercents() {
-        this.percents = pm/5;
+        if (people == 0 ) {
+            this.percents = 0;
+        }else {
+            this.percents = pm/5;
+        }
     }
 
     int getPercents() {
@@ -64,18 +68,18 @@ public class ButtonPM extends Button{
     }
 
     void setBackgroundColor() {
-        if (pm > 150) {
+        if (percents >= 30) {
             setBackground(Color.RED);
         }
-        else if (pm > 100) {
+        else if (percents >= 20) {
             setBackground(Color.ORANGE);
         }
-        else if (pm > 50) {
+        else if (percents >= 10) {
             setBackground(Color.YELLOW);
         }
         else {
             setBackground(Color.GREEN);
-        }
+        } revalidate();
     }
 }
 
