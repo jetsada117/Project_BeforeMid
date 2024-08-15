@@ -74,7 +74,7 @@ class Process extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == file) {
-            selectfile();
+            selectfile(e);
         } else if (e.getSource() == people) {
             setPeople(e);
         } else if (e.getSource() == random) {
@@ -86,7 +86,7 @@ class Process extends JFrame implements ActionListener {
         }
     }
 
-    void selectfile() {
+    void selectfile(ActionEvent e) {
 
         // library เลือกไฟล์จากตัวเครื่อง
         JFileChooser filechooser = new JFileChooser();
@@ -108,6 +108,7 @@ class Process extends JFrame implements ActionListener {
             // เมื่อกด Cancel จะไม่มีการเลือกไฟล์
             JOptionPane.showMessageDialog(null, "NO FILE SELECT","ALERT", JOptionPane.WARNING_MESSAGE);
         }
+
     }
 
     void setPeople(ActionEvent e) {
@@ -116,7 +117,7 @@ class Process extends JFrame implements ActionListener {
             String message = people_box.getText();
             int value = Integer.parseInt(message);
 
-            if(value>=0) {
+            if(value >= 0) {
                 people.setPeople(value);            
                 start_box.setText("");
                 end_box.setText("");
@@ -126,13 +127,13 @@ class Process extends JFrame implements ActionListener {
                 people_box.setText("");
             }
 
-
-            if ((file.getValuePm() != null)) {
+            if (file.getFilepath() != null) {
                 showButton(e);
             }
             else {
                 JOptionPane.showMessageDialog(null, "Please select a file","ALERT", JOptionPane.WARNING_MESSAGE);
             }
+
         } catch (NumberFormatException ex) {
             // เมื่อไม่มีการใส่จำนวนประชากรหรือใส่จำนวนประชากรไม่ถูกต้องจะมีการแจ้งเตือน
             JOptionPane.showMessageDialog(null, "Please enter a number","ALERT", JOptionPane.WARNING_MESSAGE);
@@ -150,16 +151,16 @@ class Process extends JFrame implements ActionListener {
             for (int j = 0; j < 20; j++) {
                 button[i][j] = new ButtonPM();
                 button[i][j].setPosition(i, j);
+                button[i][j].setPm(Pm[i][j]);
                 
                 if (e.getSource() == people) {
 
-                    button[i][j].setPm(Pm[i][j]);
                     button[i][j].setPeople(value);
                 }
                 else if (e.getSource() == random) {
-                    button[i][j].setPm(Pm[i][j]);
+
                     button[i][j].setPeople(random.getRandomNumber());
-                }        
+                }      
 
                 button[i][j].setPercents();
                 button[i][j].setPantient();
@@ -210,14 +211,11 @@ class Process extends JFrame implements ActionListener {
             int j = column + dy[k];
     
             if (i >= 0 && i < 10 && j >= 0 && j < 20) { // ตรวจสอบขอบเขต
-                System.out.println("button "+ i+ " "+ j+ " : " + button[i][j].getPm());
 
                 int reduce = button[i][j].getPm() - (button[i][j].getPm() * reduction[k] / 100);
                 if (reduce < 0) reduce = 0; // ป้องกันไม่ให้ค่าติดลบ
                 button[i][j].setPm(reduce);
                 button[i][j].setBackgroundColor();
-
-                System.out.println("button "+ i+ " "+ j+ " : " + button[i][j].getPm());
             }
         }
     }
@@ -235,7 +233,7 @@ class Process extends JFrame implements ActionListener {
                 random.setStart(startValue);
                 random.setEnd(endValue);
 
-                if ((file.getValuePm() != null)) {
+                if ((file.getFilepath() != null)) {
                     showButton(e);
                 }
                 else {
@@ -260,20 +258,28 @@ class Process extends JFrame implements ActionListener {
     }
 
     void setRain(ActionEvent e) {
-        if (e.getSource() == rain) {
-            for (int i = 0; i < 10 ; i++) {
-                for (int j = 0; j < 20 ; j++) {
-                    int newPm = button[i][j].getPm() - 50;
-                    if(newPm < 0) newPm = 0;
 
-                    button[i][j].setPm(newPm);
-                    button[i][j].setBackgroundColor();
-                }
-            } 
+        try {
+            if (e.getSource() == rain) {
+                for (int i = 0; i < 10 ; i++) {
+                    for (int j = 0; j < 20 ; j++) {
+                        int newPm = button[i][j].getPm() - 50;
+                        if(newPm < 0) newPm = 0;
+
+                        button[i][j].setPm(newPm);
+                        button[i][j].setBackgroundColor();
+                    }
+                } 
+            }
+        } catch (NullPointerException ex) {
+            // แสดงข้อความแจ้งเตือนเมื่อมีการใส่ข้อมูลไม่ครบ
+            JOptionPane.showMessageDialog(null, "Please enter complete information","ALERT", JOptionPane.WARNING_MESSAGE);
         }
-    }
-//setแถบซ้าย จะมีแถบสีแสดง ปริมาณคนปวย JPanel panel ที่รับมาเป็น atribute ที่ประกาศไว้ด้านบน
 
+
+    }
+
+    // set แถบซ้าย จะมีแถบสีแสดง ปริมาณคนปวย JPanel panel ที่รับมาเป็น atribute ที่ประกาศไว้ด้านบน
     private void setLeftbar(JPanel panel) {
         Color color = new Color(159,160,159);
 
@@ -360,7 +366,8 @@ class Process extends JFrame implements ActionListener {
         panel.add(plane);
         panel.add(rain);
     }
-//เลือกไฟล์ PM 2.5
+    
+    // เลือกไฟล์ PM 2.5
     private JPanel setPanfile() {      
         JPanel panfile = new JPanel();
         JLabel text = new JLabel("INPUT FILE");
@@ -384,7 +391,8 @@ class Process extends JFrame implements ActionListener {
 
         return panfile;
     }
-    //ใส่จำนวนประชากร
+    
+    // ใส่จำนวนประชากร
     private JPanel setPanpeople() {
         JPanel panpeople = new JPanel();
         Label text = new Label("INPUT POPULATION");
@@ -407,7 +415,8 @@ class Process extends JFrame implements ActionListener {
 
         return panpeople;
     }
-//สุ่มจำนวนประชากร
+    
+    // สุ่มจำนวนประชากร
     private JPanel setPanrandom() {
         JPanel panrandom = new JPanel();  
         JLabel text = new JLabel("INPUT RANDOM POPULATION");
