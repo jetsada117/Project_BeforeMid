@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 class Process extends JFrame implements ActionListener {
-    JPanel pancenter = new JPanel();
-    JPanel background = new JPanel();
-    TextField file_box = new TextField();     
-    TextField people_box = new TextField();
-    TextField start_box = new TextField();
-    TextField end_box = new TextField();
+    JPanel pancenter = new JPanel(); // panel เอาไว้รงรับปุ่ม 200 ปุ่ม
+    JPanel background = new JPanel(); // panel ตั้งค่าสีพื้นหลัง
+    TextField file_box = new TextField(); // ช่องแสดงตำแหน่งไฟล์  
+    TextField people_box = new TextField(); // ช่องรับค่าคน
+    TextField start_box = new TextField(); // ช่องรับค่าคนแบบสุ่ม(ตำแหน่งเริ่มต้น)
+    TextField end_box = new TextField(); // ช่องรับค่าคนแบบสุ่ม(ตำแหน่งสุดท้าย)
     ButtonFile file = new ButtonFile();        
     JLabel dust = new JLabel();
     JLabel population = new JLabel();
@@ -53,6 +53,7 @@ class Process extends JFrame implements ActionListener {
         pancenter.setLocation(195,0);        
         pancenter.setLayout(new GridLayout(10,20,0,2));
         pancenter.setBackground(new Color(211,211,211));
+
         //เรียก Method เพื่อมา set ค่าและตำแหน่ง
         setLeftbar(leftbar);        
         setRightbar(rightbar);
@@ -153,6 +154,7 @@ class Process extends JFrame implements ActionListener {
                 button[i][j].setPosition(i, j);
                 button[i][j].setPm(Pm[i][j]);
                 
+                // เงื่อนไขว่าเรารับประชากรมาจากปุ่มไหน
                 if (e.getSource() == people) {
 
                     button[i][j].setPeople(value);
@@ -392,7 +394,7 @@ class Process extends JFrame implements ActionListener {
         return panfile;
     }
     
-    // ใส่จำนวนประชากร
+   
     private JPanel setPanpeople() {
         JPanel panpeople = new JPanel();
         Label text = new Label("INPUT POPULATION");
@@ -416,7 +418,7 @@ class Process extends JFrame implements ActionListener {
         return panpeople;
     }
     
-    // สุ่มจำนวนประชากร
+    
     private JPanel setPanrandom() {
         JPanel panrandom = new JPanel();  
         JLabel text = new JLabel("INPUT RANDOM POPULATION");
