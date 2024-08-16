@@ -2,7 +2,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 
 public class ButtonPeople extends JButton {
-    int people = 0;
+    private int people = 0;
 
     ButtonPeople() {
         setText("CONFIRM");

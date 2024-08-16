@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 class Process extends JFrame implements ActionListener {
-    JPanel pancenter = new JPanel(); // panel เอาไว้รงรับปุ่ม 200 ปุ่ม
+    JPanel pancenter = new JPanel(); // panel เอาไว้รองรับปุ่ม 200 ปุ่ม
     JPanel background = new JPanel(); // panel ตั้งค่าสีพื้นหลัง
     TextField file_box = new TextField(); // ช่องแสดงตำแหน่งไฟล์  
     TextField people_box = new TextField(); // ช่องรับค่าคน
@@ -26,6 +26,8 @@ class Process extends JFrame implements ActionListener {
     JLabel heal = new JLabel();
     JLabel pantient = new JLabel();
     JLabel percen = new JLabel();
+    JLabel status_plane = new JLabel();
+    JLabel text_status = new JLabel();
     ButtonPeople people = new ButtonPeople();
     ButtonRandom random = new ButtonRandom();
     ButtonPlane plane = new ButtonPlane();
@@ -54,7 +56,6 @@ class Process extends JFrame implements ActionListener {
         pancenter.setLayout(new GridLayout(10,20,0,2));
         pancenter.setBackground(new Color(211,211,211));
 
-        //เรียก Method เพื่อมา set ค่าและตำแหน่ง
         setLeftbar(leftbar);        
         setRightbar(rightbar);
         setFooter(footer);
@@ -186,6 +187,7 @@ class Process extends JFrame implements ActionListener {
                         updatePmAndColor(row, column, button);
                         
                         enabledPlane = false;
+                        setStatus();
                     }
 
                     button[x][y].setPercents();
@@ -262,6 +264,20 @@ class Process extends JFrame implements ActionListener {
     void setPlane(ActionEvent e) {
         if(e.getSource() == plane) {
             enabledPlane = true;
+            setStatus();
+        }
+    }
+
+    void setStatus() {
+        if(enabledPlane) {
+            text_status.setText("ON");            
+            text_status.setForeground(Color.green);
+            status_plane.setText("Plane Mode : ");
+        }
+        else {
+            text_status.setText("OFF");            
+            text_status.setForeground(Color.red);
+            status_plane.setText("Plane Mode : ");
         }
     }
 
@@ -288,7 +304,6 @@ class Process extends JFrame implements ActionListener {
 
     }
 
-    // set แถบซ้าย จะมีแถบสีแสดง ปริมาณคนปวย JPanel panel ที่รับมาเป็น atribute ที่ประกาศไว้ด้านบน
     private void setLeftbar(JPanel panel) {
         Color color = new Color(159,160,159);
 
@@ -298,7 +313,7 @@ class Process extends JFrame implements ActionListener {
         panel.setLayout(null);
 
         panel.add(getPanelcolor(color, Color.RED,"<html>มีคนป่วยเกิน 30% ของประชากรในพื้นที่</html>", Color.WHITE,10,10));        
-        panel.add(getPanelcolor(color, Color.ORANGE,"<html>มีคนป่วย 20-29% ของประชากรในพื้นที่</html>", Color.WHITE,10,100));
+        panel.add(getPanelcolor(color, new Color(235, 199, 24),"<html>มีคนป่วย 20-29% ของประชากรในพื้นที่</html>", Color.WHITE,10,100));
         panel.add(getPanelcolor(color, Color.YELLOW,"<html>มีคนป่วย 10-19% ของประชากรในพื้นที่</html>", Color.WHITE,10,190));
         panel.add(getPanelcolor(color, Color.GREEN,"<html>มีคนป่วย 0-9% ของประชากรในพื้นที่</html>", Color.WHITE,10,280));        
     }
@@ -330,23 +345,41 @@ class Process extends JFrame implements ActionListener {
 
     private void setRightbar(JPanel panel) {
         Font font = new Font("Tahoma", Font.BOLD, 12);
+        JPanel status = new JPanel();
+        JLabel title_status = new JLabel("STATUS : ");
+
+        status.setBounds(10, 230, 160, 50);
+        title_status.setBounds(15, 200, 160, 30);
+        title_status.setFont(new Font("Tahoma", Font.BOLD, 15));
+        title_status.setForeground(Color.WHITE);
+        status_plane.setBounds(0, 0, 100, 30);
+        status_plane.setFont(new Font("Tahoma", Font.BOLD, 12));
+        text_status.setBounds(100, 0, 50, 30);
+        text_status.setFont(new Font("Tahoma", Font.BOLD, 12));
+        text_status.setText("OFF");            
+        text_status.setForeground(Color.red);
+        status_plane.setText("Plane Mode : ");
 
         panel.setSize(190,420);
         panel.setLocation(700,0);
         panel.setBackground(new Color(159,160,159));
         panel.setLayout(null);
 
-        setLocaRightbar(dust, font, 10, 10, 160, 50);
-        setLocaRightbar(population, font, 10, 65, 160, 50);
-        setLocaRightbar(heal, font, 10, 120, 160, 50);
-        setLocaRightbar(pantient, font, 10, 175, 160, 50);
-        setLocaRightbar(percen, font, 10, 230, 160, 50);
+        setLocaRightbar(dust, font, 10, 10, 160, 30);
+        setLocaRightbar(population, font, 10, 45, 160, 30);
+        setLocaRightbar(heal, font, 10, 80, 160, 30);
+        setLocaRightbar(pantient, font, 10, 115, 160, 30);
+        setLocaRightbar(percen, font, 10, 150, 160, 30);
 
+        panel.add(status);
+        panel.add(title_status);
         panel.add(dust);
         panel.add(population);
         panel.add(heal);
         panel.add(pantient);
         panel.add(percen);
+        status.add(status_plane);
+        status.add(text_status);
     }
 
     private void showRightbar(int d, int po, int h, int pan, int per) {
@@ -376,7 +409,6 @@ class Process extends JFrame implements ActionListener {
         panel.add(rain);
     }
     
-    // เลือกไฟล์ PM 2.5
     private JPanel setPanfile() {      
         JPanel panfile = new JPanel();
         JLabel text = new JLabel("INPUT FILE");

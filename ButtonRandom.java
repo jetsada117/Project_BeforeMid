@@ -2,8 +2,8 @@ import java.awt.Font;
 import javax.swing.JButton;
 
 public class ButtonRandom extends JButton{
-    int start;
-    int end;
+    private int start;
+    private int end;
 
     public ButtonRandom() {
         setText("RANDOM");

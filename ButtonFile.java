@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class ButtonFile extends JButton {
-    int valuePm [][] = new int[10][20];
+    private int valuePm [][] = new int[10][20];
     private String filepath;
 
     public ButtonFile() {

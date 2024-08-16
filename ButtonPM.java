@@ -7,8 +7,8 @@ public class ButtonPM extends Button{
     private int healthy;
     private float  pantient;
     private int percents;
-    private int x;
-    private int y;
+    private int row;
+    private int column;
 
     void setPm(int pm) {
         this.pm = pm;
@@ -54,17 +54,17 @@ public class ButtonPM extends Button{
         return healthy;
     }
 
-    void setPosition(int x, int y) {
-        this.x = x;
-        this.y = y;
+    void setPosition(int row, int column) {
+        this.row = row;
+        this.column = column;
     }
 
     int getRow() {
-        return x;
+        return row;
     }
 
     int getColumn() {
-        return y;
+        return column;
     }
 
     void setBackgroundColor() {
@@ -72,14 +72,15 @@ public class ButtonPM extends Button{
             setBackground(Color.RED);
         }
         else if (percents >= 20) {
-            setBackground(Color.ORANGE);
+            setBackground(new Color(235, 199, 24));
         }
         else if (percents >= 10) {
             setBackground(Color.YELLOW);
         }
         else {
             setBackground(Color.GREEN);
-        } revalidate();
+        } 
+        revalidate();
     }
 }
 
