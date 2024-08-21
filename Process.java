@@ -141,6 +141,7 @@ class Process extends JFrame implements ActionListener {
         } catch (NumberFormatException ex) {
             // เมื่อไม่มีการใส่จำนวนประชากรหรือใส่จำนวนประชากรไม่ถูกต้องจะมีการแจ้งเตือน
             JOptionPane.showMessageDialog(null, "Please enter a number","ALERT", JOptionPane.WARNING_MESSAGE);
+            
         }
 
     }

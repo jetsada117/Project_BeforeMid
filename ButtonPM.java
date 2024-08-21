@@ -11,7 +11,12 @@ public class ButtonPM extends Button{
     private int column;
 
     void setPm(int pm) {
-        this.pm = pm;
+        if (pm <= 0) {
+            this.pm = 0;
+        }
+        else {
+            this.pm = pm;
+        }
     }
 
     void setPeople(int people) {
@@ -72,7 +77,7 @@ public class ButtonPM extends Button{
             setBackground(Color.RED);
         }
         else if (percents >= 20) {
-            setBackground(new Color(235, 199, 24));
+            setBackground(Color.ORANGE);
         }
         else if (percents >= 10) {
             setBackground(Color.YELLOW);

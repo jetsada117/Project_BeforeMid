@@ -36,7 +36,7 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
 
     public MyFramework(){
         setSize(900,600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
         setLayout(null);
