@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,7 +15,7 @@ public class ButtonPlane extends JButton{
 
         setIcon(imageIcon);     
         setBackground(new Color(159,160,159));
-        setBounds(700, 10, 180, 130);
+        setPreferredSize(new Dimension(180, 130));
         setBorder(null);
     }
 }

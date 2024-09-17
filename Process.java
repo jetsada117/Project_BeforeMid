@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Label;
@@ -14,6 +16,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 class Process extends JFrame implements ActionListener {
+    JPanel leftbar = new JPanel();
+    JPanel rightbar = new JPanel();
+    JPanel footer = new JPanel();
     JPanel pancenter = new JPanel(); // panel เอาไว้รองรับปุ่ม 200 ปุ่ม
     JPanel background = new JPanel(); // panel ตั้งค่าสีพื้นหลัง
     TextField file_box = new TextField(); // ช่องแสดงตำแหน่งไฟล์  
@@ -36,34 +41,27 @@ class Process extends JFrame implements ActionListener {
     boolean enabledPlane = false;
         
     public Process() {    
-        JPanel leftbar = new JPanel();
-        JPanel rightbar = new JPanel();
-        JPanel footer = new JPanel();
 
         setSize(900,600);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setResizable(false);
+        setResizable(true);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
         
-        background.setSize(900,600);
-        background.setLocation(0,0); 
-        background.setBackground(new Color(211,211,211));  
-        background.setLayout(new BorderLayout());       
+        background.setBackground(new Color(255,255,51));  
+        background.setLayout(new BorderLayout(5,5));       
 
-        pancenter.setSize(500,400);
-        pancenter.setLocation(195,0);        
+        pancenter.setPreferredSize(new Dimension(500,400));
         pancenter.setLayout(new GridLayout(10,20,0,2));
-        pancenter.setBackground(new Color(211,211,211));
+        pancenter.setBackground(new Color(159,160,159));
 
         setLeftbar(leftbar);        
         setRightbar(rightbar);
         setFooter(footer);
 
-        add(pancenter);
-        add(leftbar);
-        add(rightbar);
-        add(footer);
+        background.add(leftbar, BorderLayout.WEST);
+        background.add(pancenter, BorderLayout.CENTER);
+        background.add(rightbar, BorderLayout.EAST);
+        background.add(footer, BorderLayout.SOUTH);
         add(background);
 
         file.addActionListener(this);
@@ -308,21 +306,20 @@ class Process extends JFrame implements ActionListener {
     private void setLeftbar(JPanel panel) {
         Color color = new Color(159,160,159);
 
-        panel.setSize(190,420);
-        panel.setLocation(0,0);
+        panel.setPreferredSize(new Dimension(190,420));
         panel.setBackground(color);
-        panel.setLayout(null);
+        panel.setLayout(new FlowLayout(1));
 
-        panel.add(getPanelcolor(color, Color.RED,"<html>มีคนป่วยเกิน 30% ของประชากรในพื้นที่</html>", Color.WHITE,10,10));        
-        panel.add(getPanelcolor(color, new Color(235, 199, 24),"<html>มีคนป่วย 20-29% ของประชากรในพื้นที่</html>", Color.WHITE,10,100));
-        panel.add(getPanelcolor(color, Color.YELLOW,"<html>มีคนป่วย 10-19% ของประชากรในพื้นที่</html>", Color.WHITE,10,190));
-        panel.add(getPanelcolor(color, Color.GREEN,"<html>มีคนป่วย 0-9% ของประชากรในพื้นที่</html>", Color.WHITE,10,280));        
+        panel.add(getPanelcolor(color, Color.RED,"<html>มีคนป่วยเกิน 30% ของประชากรในพื้นที่</html>", Color.WHITE));        
+        panel.add(getPanelcolor(color, new Color(235, 199, 24),"<html>มีคนป่วย 20-29% ของประชากรในพื้นที่</html>", Color.WHITE));
+        panel.add(getPanelcolor(color, Color.YELLOW,"<html>มีคนป่วย 10-19% ของประชากรในพื้นที่</html>", Color.WHITE));
+        panel.add(getPanelcolor(color, Color.GREEN,"<html>มีคนป่วย 0-9% ของประชากรในพื้นที่</html>", Color.WHITE));        
     }
 
-    private JPanel getPanelcolor(Color background,Color box,String text,Color ctext, int x, int y) {
+    private JPanel getPanelcolor(Color background,Color box,String text,Color ctext) {
         JPanel panel = new JPanel();
-        panel.setSize(160,90);
-        panel.setLocation(x,y);
+
+        panel.setPreferredSize(new Dimension(160,90));
         panel.setBackground(background);
         panel.setLayout(null);
 
@@ -349,8 +346,12 @@ class Process extends JFrame implements ActionListener {
         JPanel status = new JPanel();
         JLabel title_status = new JLabel("STATUS : ");
 
-        status.setBounds(10, 230, 160, 50);
-        title_status.setBounds(15, 200, 160, 30);
+        panel.setPreferredSize(new Dimension(190,420));
+        panel.setBackground(new Color(159,160,159));
+        panel.setLayout(new FlowLayout(1));
+
+        status.setPreferredSize(new Dimension(160,50));
+        title_status.setPreferredSize(new Dimension(160,30));
         title_status.setFont(new Font("Tahoma", Font.BOLD, 15));
         title_status.setForeground(Color.WHITE);
         status_plane.setBounds(0, 0, 100, 30);
@@ -361,24 +362,20 @@ class Process extends JFrame implements ActionListener {
         text_status.setForeground(Color.red);
         status_plane.setText("Plane Mode : ");
 
-        panel.setSize(190,420);
-        panel.setLocation(700,0);
-        panel.setBackground(new Color(159,160,159));
-        panel.setLayout(null);
+        setLocaRightbar(dust, font);
+        setLocaRightbar(population, font);
+        setLocaRightbar(heal, font);
+        setLocaRightbar(pantient, font);
+        setLocaRightbar(percen, font);
 
-        setLocaRightbar(dust, font, 10, 10, 160, 30);
-        setLocaRightbar(population, font, 10, 45, 160, 30);
-        setLocaRightbar(heal, font, 10, 80, 160, 30);
-        setLocaRightbar(pantient, font, 10, 115, 160, 30);
-        setLocaRightbar(percen, font, 10, 150, 160, 30);
-
-        panel.add(status);
-        panel.add(title_status);
         panel.add(dust);
         panel.add(population);
         panel.add(heal);
         panel.add(pantient);
-        panel.add(percen);
+        panel.add(percen);        
+        panel.add(title_status);
+        panel.add(status);
+
         status.add(status_plane);
         status.add(text_status);
     }
@@ -391,16 +388,16 @@ class Process extends JFrame implements ActionListener {
         percen.setText("Percent Patient  :  "+ per +" % ");
     }
 
-    private void setLocaRightbar(JLabel label, Font font, int x, int y, int width, int height) {      
-        label.setBounds(x,y,width,height);
+    private void setLocaRightbar(JLabel label, Font font) {      
+        label.setPreferredSize(new Dimension(160,30));
         label.setFont(font);
         label.setForeground(Color.WHITE);
+        label.setBackground(new Color(255,0,0));
     }
 
     private void setFooter(JPanel panel) {
-        panel.setSize(900,177);
-        panel.setLocation(0,423);
-        panel.setLayout(null);
+        panel.setPreferredSize(new Dimension(900,175));
+        panel.setLayout(new FlowLayout());
         panel.setBackground(new Color(159,160,159));
 
         panel.add(setPanfile());
@@ -408,6 +405,8 @@ class Process extends JFrame implements ActionListener {
         panel.add(setPanrandom());
         panel.add(plane);
         panel.add(rain);
+
+        panel.revalidate();
     }
     
     private JPanel setPanfile() {      
@@ -415,8 +414,7 @@ class Process extends JFrame implements ActionListener {
         JLabel text = new JLabel("INPUT FILE");
         Font font = new Font("Arial", Font.BOLD, 10);
 
-        panfile.setSize(180,100);
-        panfile.setLocation(10,20);
+        panfile.setPreferredSize(new Dimension(180, 100));
         panfile.setLayout(null);
 
         text.setSize(120,20);
@@ -439,8 +437,7 @@ class Process extends JFrame implements ActionListener {
         JPanel panpeople = new JPanel();
         Label text = new Label("INPUT POPULATION");
 
-        panpeople.setSize(130,100);
-        panpeople.setLocation(200,20);
+        panpeople.setPreferredSize(new Dimension(130, 100));
         panpeople.setLayout(null);        
 
         text.setSize(120,20);
@@ -464,8 +461,7 @@ class Process extends JFrame implements ActionListener {
         JLabel text = new JLabel("INPUT RANDOM POPULATION");
         JLabel to = new JLabel("To");
 
-        panrandom.setSize(180,100);
-        panrandom.setLocation(340,20);
+        panrandom.setPreferredSize(new Dimension(180, 100));
         panrandom.setLayout(null);
 
         text.setSize(160,20);

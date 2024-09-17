@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,7 +14,7 @@ public class ButtonRain  extends JButton{
  
         setIcon(imageIcon);
         setBackground(new Color(159,160,159));
-        setBounds(530, 10, 150, 120);
+        setPreferredSize(new Dimension(150, 120));
         setBorder(null);
     }
     

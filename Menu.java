@@ -39,10 +39,7 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(null);
 
-        background.setSize(900,600);
-        background.setLocation(0,-10);
         background.setBackground(Color.WHITE);
         background.setLayout(new BorderLayout());
         Font font = new Font("Arial", Font.BOLD, 20); 
@@ -61,7 +58,6 @@ class MyFramework extends JFrame implements ActionListener, WindowListener{
         buttonexit.setSize(200, 60);
         buttonexit.setLocation(350, 350);
         buttonexit.setText("EXIT");
-
         
         text.setSize(300, 120);
         text.setLocation(350, 20);
